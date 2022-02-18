@@ -2,12 +2,7 @@
   <!-- <div class="home"> -->
   <div class="container">
     <section>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, totam
-        tempora illo asperiores mollitia blanditiis amet facere. Saepe corrupti
-        doloremque vitae? Architecto, corporis sapiente error distinctio
-        provident ipsa consectetur tenetur!
-      </h1>
+      <h1>Хазяяяин времени</h1>
       <button class="button-add button" type="button">
         Добавить
         <svg
@@ -25,7 +20,10 @@
       </button>
       <div class="container-modal">
         <div class="modal-window_modal">
-          <button>
+          <div class="modal-h1">
+            <h1>Формы к заполнению</h1>
+          </div>
+          <button class="modal-hide">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -48,60 +46,64 @@
               </g>
             </svg>
           </button>
-          <div class="task-title">
+          <div class="task_title">
             <input
               class="input_task-title"
               type="text"
               placeholder="Заголовок задачи"
             />
           </div>
-          <div class="task-text">
-            <input
+          <div class="task_text">
+            <textarea
               class="input_task-text"
               type="text"
               placeholder="Текст задачи"
-            />
+            ></textarea>
           </div>
-          <div class="task-type">
-            <div class="task-type_text">Тип задачи</div>
-            <div class="task-type_selection">
-              <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">К выполнению</div>
+          <div class="task_type-container">
+            <div class="task_type">
+              <div class="task-type_text"><h3>Тип задачи</h3></div>
+              <div class="task-type_selection">
+                <div class="selection-checkbox">
+                  <input class="checkbox-task" type="checkbox" />
+                  <div class="checkbox-name">К выполнению</div>
+                </div>
+                <div class="selection-checkbox">
+                  <input class="checkbox-task" type="checkbox" />
+                  <div class="checkbox-name">Напоминание</div>
+                </div>
               </div>
-              <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Напоминание</div>
+            </div>
+            <div class="task_type">
+              <div class="task-type_text"><h3>Приоритет</h3></div>
+              <div class="task-type_selection">
+                <div class="selection-checkbox">
+                  <input class="checkbox-task" type="checkbox" />
+                  <div class="checkbox-name">Высокий</div>
+                </div>
+                <div class="selection-checkbox">
+                  <input class="checkbox-task" type="checkbox" />
+                  <div class="checkbox-name">Средний</div>
+                </div>
+                <div class="selection-checkbox">
+                  <input class="checkbox-task" type="checkbox" />
+                  <div class="checkbox-name">Низкий</div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="task-type">
-            <div class="task-type_text">Приоритет</div>
-            <div class="task-type_selection">
-              <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Высокий</div>
-              </div>
-              <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Средний</div>
-              </div>
-              <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Низкий</div>
-              </div>
+          <div class="time_date">
+            <div class="date-added">
+              Дата добавления :
+              <input type="datetime-local" name="" id="date_added" />
             </div>
-          </div>
-          <div class="date-added">
-            Дата добавления :
-            <input type="datetime-local" name="" id="date_added" />
-          </div>
-          <div class="date-completion">
-            Время выполнения :
-            <input type="datetime-local" name="" id="date_completion" />
+            <div class="date-completion">
+              Время выполнения :
+              <input type="datetime-local" name="" id="date_completion" />
+            </div>
           </div>
           <div class="save-remove">
-            <button class="button" type="button">
+            <button class="button button-modal" type="button">
               Сохранить
               <svg
                 class="svg-plus"
@@ -116,12 +118,12 @@
                 ></path>
               </svg>
             </button>
-            <button class="button" type="button">
+            <button class="button button-modal" type="button">
               Очистить
               <svg
                 class="svg-plus"
                 xmlns="http://www.w3.org/2000/svg"
-                width="30"
+                width="0"
                 height="30"
                 viewBox="0 0 24 24"
                 fill="#ffffff"
