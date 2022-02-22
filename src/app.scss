@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #473663;
+  color: #424142;
   --tw-bg-opacity: 1;
   background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
 }
@@ -66,7 +66,7 @@ button:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(255, 255, 255);
   display: flex;
 }
 .modal-window {
@@ -75,10 +75,10 @@ button:focus {
   &_modal {
     padding: 10px;
     position: relative;
-    margin: 0px auto;
+    margin: 50px auto;
     width: 80%;
     border-radius: 11px;
-    background: rgb(233, 225, 190);
+    background: rgba(0, 0, 0, 0.096);
   }
 }
 .modal-h1 {
@@ -101,13 +101,13 @@ button:focus {
     height: 25px;
     display: block;
     min-width: 30%;
-    padding-right: 40px;
+    padding-right: 10px;
 
     border-color: rgba(209, 213, 219, var(--tw-border-opacity));
     color: rgba(17, 24, 39, var(--tw-text-opacity));
     border-radius: 5px;
     margin-bottom: 30px;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   &_task-title:focus {
@@ -123,14 +123,15 @@ button:focus {
     min-height: 100px;
     display: block;
     min-width: 40%;
-    padding-right: 40px;
+    padding-right: 20px;
     --tw-border-opacity: 1;
     border-color: rgba(209, 213, 219, var(--tw-border-opacity));
     color: rgba(17, 24, 39, var(--tw-text-opacity));
     border-radius: 5px;
     max-width: 80%;
     max-height: 500px;
-    font-size: 16px;
+    font-size: 20px;
+
   }
 
   &_task-text:focus {
@@ -167,6 +168,7 @@ button:focus {
 // }
 .time_date {
   display: flex;
+  // flex-direction: column;
   justify-content: space-around;
   margin-bottom: 60px;
   font-size: 18px;
@@ -187,3 +189,111 @@ button:focus {
 }
 // .svg-plus {
 // }
+.wrapper {
+
+  // .wrapper_tasks
+
+  &_tasks {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns:repeat(1, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+.container {
+
+  // .container_task
+
+  &_task {
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+    overflow: hidden;
+    --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    
+    border-color: rgba(0, 0, 0, 0.356);
+    border-style: double;
+    cursor: pointer;
+  }
+}
+.task {
+
+  // .task_name-content
+
+  &_name-content {
+    padding: 20px, 16px, 20px, 16px;
+    text-align: center;
+  }
+}
+
+.task-name{
+  font-size: 20px;
+  line-height: 24px;
+  font-weight:500;
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+
+}
+.task_name-content{
+
+  font-size: 20px;
+  line-height: 24px;
+  font-weight:500;
+  --tw-text-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-text-opacity));
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space:pre-wrap;
+}
+
+.task-name{
+  max-height: 70px;
+  font-size: 26px;
+  font-weight: 700;
+  padding-top: 30px;
+  margin-bottom:20px;
+  text-overflow: clip;
+}
+.task-content{
+  margin: 0;
+  margin: 0, auto;
+  overflow: auto;
+  max-height: 200px;
+  text-overflow: clip;
+  margin-bottom: 20px;
+}
+
+.type-task{
+  margin-bottom: 20px;
+}
+
+
+
+
+
+//TODO Media Media Media Media Media Media Media Media
+
+@media (min-width: 640px) {
+  .wrapper_tasks {
+    grid-template-columns: repeat(5, minmax(0,1fr));
+  }
+  .task_name-content {
+    padding: 24px;
+  }
+};
+
+@media (max-width: 640px) {
+  .time_date {
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    margin-bottom: 60px;
+    font-size: 18px;
+  }
+  .date-added {
+    margin-bottom: 20px;
+  }
+}

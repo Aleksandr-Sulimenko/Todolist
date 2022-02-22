@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <section>
-        <h1>Хазяяяин времени</h1>
+        <h1>Хозяяяин времени</h1>
         <button
           v-on:click="openModal()"
           class="button-add button"
@@ -52,13 +52,16 @@
             </button>
             <div class="task_title">
               <input
+                v-model="task"
                 class="input_task-title"
                 type="text"
                 placeholder="Заголовок задачи"
               />
+              {{ t }}
             </div>
             <div class="task_text">
               <textarea
+                v-model="content"
                 class="input_task-text"
                 type="text"
                 placeholder="Текст задачи"
@@ -66,14 +69,24 @@
             </div>
             <div class="task_type-container">
               <div class="task_type">
-                <div class="task-type_text"><h3>Тип задачи</h3></div>
+                <div class="task-type_text">
+                  <h3>Тип задачи</h3>
+                </div>
                 <div class="task-type_selection">
                   <div class="selection-checkbox">
-                    <input class="checkbox-task" type="checkbox" />
+                    <input
+                      v-model="type"
+                      class="checkbox-task"
+                      type="checkbox"
+                    />
                     <div class="checkbox-name">К выполнению</div>
                   </div>
                   <div class="selection-checkbox">
-                    <input class="checkbox-task" type="checkbox" />
+                    <input
+                      v-model="type"
+                      class="checkbox-task"
+                      type="checkbox"
+                    />
                     <div class="checkbox-name">Напоминание</div>
                   </div>
                 </div>
@@ -99,15 +112,29 @@
             <div class="time_date">
               <div class="date-added">
                 Дата добавления :
-                <input type="datetime-local" name="" id="date_added" />
+                <input
+                  v-model="dateAdd"
+                  type="datetime-local"
+                  name=""
+                  id="date_added"
+                />
               </div>
               <div class="date-completion">
                 Время выполнения :
-                <input type="datetime-local" name="" id="date_completion" />
+                <input
+                  v-model="dateDue"
+                  type="datetime-local"
+                  name=""
+                  id="date_completion"
+                />
               </div>
             </div>
             <div class="save-remove">
-              <button class="button button-modal" type="button">
+              <button
+                v-on:click="addTask()"
+                class="button button-modal"
+                type="button"
+              >
                 Сохранить
                 <svg
                   class="svg-plus"
@@ -141,27 +168,81 @@
           </div>
         </div>
       </section>
+
+      <template v-if="tasks.length">
+        <dl class="wrapper_tasks">
+          <div
+            v-for="(t, inx) in tasks"
+            v-bind:key="inx"
+            class="container_task"
+          >
+            <div class="task_name-content">
+              <dt class="task-name">{{ t.name }}</dt>
+              <dd class="task-content">{{ t.content }}</dd>
+              <div class="type-task">??? {{}}</div>
+              <div class="date-add">Дата добавления: {{ t.dateadd }}</div>
+              <div class="date-due">Датавыполнения: {{ t.datedue }}</div>
+            </div>
+          </div>
+        </dl>
+      </template>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-export default Vue.extend({
+export default {
+  name: "App",
+
   data() {
-    return { showModal: false };
+    return {
+      showModal: false,
+
+      task: "",
+      content: "",
+      dateAdd: "",
+      dateDue: "",
+
+      tasks: [],
+    };
+  },
+
+  created() {
+    const tasksData = localStorage.getItem("todo-list");
+    if (tasksData) {
+      this.tasks = JSON.parse(tasksData);
+    }
   },
 
   methods: {
     openModal() {
-      this.showModal = true;
+      return (this.showModal = true);
     },
 
     closeModal() {
       this.showModal = false;
     },
+
+    addTask() {
+      const newTask = {
+        name: this.task,
+        content: this.content,
+        dateadd: this.dateAdd,
+        datedue: this.dateDue,
+      };
+      this.tasks.push(newTask);
+      localStorage.setItem("todo-list", JSON.stringify(this.tasks));
+      console.log(this.tasks);
+      console.log(this.tasks.length);
+
+      this.showModal = false;
+      this.task = "";
+      this.content = "";
+      this.dateAdd = "";
+      this.dateDue = "";
+    },
   },
-});
+};
 </script>
 
 <style src="./app.scss" lang="scss"></style>
