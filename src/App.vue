@@ -52,16 +52,15 @@
             </button>
             <div class="task_title">
               <input
-                v-model="task"
+                v-model="task.name"
                 class="input_task-title"
                 type="text"
                 placeholder="Заголовок задачи"
               />
-              {{ t }}
             </div>
             <div class="task_text">
               <textarea
-                v-model="content"
+                v-model="task.content"
                 class="input_task-text"
                 type="text"
                 placeholder="Текст задачи"
@@ -74,19 +73,11 @@
                 </div>
                 <div class="task-type_selection">
                   <div class="selection-checkbox">
-                    <input
-                      v-model="type"
-                      class="checkbox-task"
-                      type="checkbox"
-                    />
+                    <input class="checkbox-task" type="checkbox" />
                     <div class="checkbox-name">К выполнению</div>
                   </div>
                   <div class="selection-checkbox">
-                    <input
-                      v-model="type"
-                      class="checkbox-task"
-                      type="checkbox"
-                    />
+                    <input class="checkbox-task" type="checkbox" />
                     <div class="checkbox-name">Напоминание</div>
                   </div>
                 </div>
@@ -110,7 +101,7 @@
               </div>
             </div>
             <div class="time_date">
-              <div class="date-added">
+              <!-- <div class="date-added">
                 Дата добавления :
                 <input
                   v-model="dateAdd"
@@ -118,11 +109,11 @@
                   name=""
                   id="date_added"
                 />
-              </div>
+              </div> -->
               <div class="date-completion">
                 Время выполнения :
                 <input
-                  v-model="dateDue"
+                  v-model="task.dateDue"
                   type="datetime-local"
                   name=""
                   id="date_completion"
@@ -169,19 +160,19 @@
         </div>
       </section>
 
-      <template v-if="tasks.length">
+      <template v-if="taskList.length">
         <dl class="wrapper_tasks">
           <div
-            v-for="(t, inx) in tasks"
-            v-bind:key="inx"
+            v-for="(item, ind) in taskList"
+            v-bind:key="ind"
             class="container_task"
           >
             <div class="task_name-content">
-              <dt class="task-name">{{ t.name }}</dt>
-              <dd class="task-content">{{ t.content }}</dd>
+              <dt class="task-name">{{ item.name }}</dt>
+              <dd class="task-content">{{ item.content }}</dd>
               <div class="type-task">??? {{}}</div>
-              <div class="date-add">Дата добавления: {{ t.dateadd }}</div>
-              <div class="date-due">Датавыполнения: {{ t.datedue }}</div>
+              <div class="date-add">Дата добавления: {{ item.dateAdd }}</div>
+              <div class="date-due">Датавыполнения: {{ item.dateDue }}</div>
             </div>
           </div>
         </dl>
@@ -197,21 +188,23 @@ export default {
   data() {
     return {
       showModal: false,
-
-      task: "",
-      content: "",
-      dateAdd: "",
-      dateDue: "",
-
-      tasks: [],
+      taskList: [],
+      task: {
+        name: "",
+        content: "",
+        dateAdd: new Date().toLocaleString(),
+        dateDue: "",
+      },
     };
   },
 
   created() {
     const tasksData = localStorage.getItem("todo-list");
     if (tasksData) {
-      this.tasks = JSON.parse(tasksData);
+      // this.taskList = [...this.taskList, ...JSON.parse(tasksData)];
+      this.taskList = JSON.parse(tasksData);
     }
+    // localStorage.clear();
   },
 
   methods: {
@@ -224,22 +217,12 @@ export default {
     },
 
     addTask() {
-      const newTask = {
-        name: this.task,
-        content: this.content,
-        dateadd: this.dateAdd,
-        datedue: this.dateDue,
-      };
-      this.tasks.push(newTask);
-      localStorage.setItem("todo-list", JSON.stringify(this.tasks));
-      console.log(this.tasks);
-      console.log(this.tasks.length);
+      this.taskList.push({ ...this.task });
+      localStorage.setItem("todo-list", JSON.stringify(this.taskList));
+      console.log(this.taskList);
 
       this.showModal = false;
-      this.task = "";
-      this.content = "";
-      this.dateAdd = "";
-      this.dateDue = "";
+      this.task = {};
     },
   },
 };
