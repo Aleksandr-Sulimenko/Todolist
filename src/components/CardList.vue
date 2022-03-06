@@ -13,10 +13,10 @@
         >
           <div class="task_name-content">
             <dt class="task-name">{{ item.name }}</dt>
-            <dd class="task-content">{{ item.description }}</dd>
+            <dd class="task-description">{{ item.description }}</dd>
             <div class="type-task">{{}}</div>
             <div class="date-add">Дата добавления: {{ item.dateAdd }}</div>
-            <div class="date-due">Датавыполнения: {{ item.dateDue }}</div>
+            <div class="date-due">Дата выполнения: {{ item.dateDue }}</div>
           </div>
         </div>
       </dl>

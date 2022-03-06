@@ -42,7 +42,7 @@ export default {
       // this.taskList = [...this.taskList, ...JSON.parse(tasksData)];
       this.taskList = JSON.parse(tasksData);
     }
-    //  localStorage.clear();
+    // localStorage.clear();
   },
 
   methods: {

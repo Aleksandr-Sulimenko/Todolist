@@ -61,13 +61,13 @@ export default {
 </script>
 
 <style>
-.Close {
+/* .Close {
   background: red;
-}
-.Add {
+} */
+/* .Add {
   background: blue;
-}
-.Default {
-  background: grey !important;
-}
+} */
+/* .Default {
+  background: rgb(128, 128, 128) !important;
+} */
 </style>

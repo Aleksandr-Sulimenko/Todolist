@@ -1,9 +1,9 @@
 <template>
   <section>
     <h1>Хозяяяин времени</h1>
-    <button-button
+    <ButtonButton
       class="button-add button"
-      :title="titleAdd"
+      :title="'Добавить'"
       :type="'Add'"
       @added-task="openModal"
     />
@@ -12,7 +12,12 @@
         <div class="modal-h1">
           <h1>Формы к заполнению</h1>
         </div>
-        <button-button class="modal-hide" @added-task="closeModal" />
+        <button-button
+          class="modal-hide"
+          @added-task="closeModal"
+          :title="''"
+          :type="'Close'"
+        />
         <div class="task_title">
           <input
             v-model="task.name"
@@ -23,7 +28,7 @@
         </div>
         <div class="task_text">
           <textarea
-            v-model="task.content"
+            v-model="task.description"
             class="input_task-text"
             type="text"
             placeholder="Текст задачи"
@@ -77,13 +82,13 @@
         <div class="save-remove">
           <button-button
             class="button-modal button"
-            :title="titleSave"
+            :title="'Сохранить'"
             @added-task="addTaskTask()"
           />
-          <button-button
+          <ButtonButton
             class="button-modal button"
             @added-task="cleaningModal"
-            :title="titleClean"
+            :title="'Очистить'"
           />
         </div>
       </div>
@@ -98,34 +103,13 @@ import ButtonButton from "./ButtonButton.vue";
 export default {
   name: "AddNewTask",
   components: { ButtonButton },
-  props: {
-    titleSave: {
-      type: String,
-      default: "Сохранить",
-    },
-    titleClean: {
-      type: String,
-      default: "Очистить",
-    },
-    titleAdd: {
-      type: String,
-      default: "Добавить",
-    },
-
-    // titleClose: {
-    //   default: plusSing,
-    // },
-    // plusIcon: {
-    //   type: String,
-    //   default: "",
-    // },
-  },
+  props: {},
   data() {
     return {
       showModal: false,
       task: {
         name: "",
-        content: "",
+        description: "",
         dateAdd: new Date().toLocaleString(),
         dateDue: "",
       },

@@ -1,14 +1,13 @@
 <template>
   <div class="selected_task">
     <div class="task-name">{{ task.name }}</div>
-    <div class="task-content task-M_content">{{ task.content }}</div>
-    <div class="date-add">Дата добавления: {{ task.description }}</div>
-    <div class="date-due">Датавыполнения:</div>
+    <div class="task-description task-M_content">{{ task.description }}</div>
+    <div class="date-add">Дата добавления: {{ task.dateAdd }}</div>
+    <div class="date-due">Дата выполнения: {{ task.dateDue }}</div>
     <button-button
       v-on:added-task="closeTask"
-      class="button-close"
+      class="button button-modal"
       :title="'Закрыть'"
-      :type="'Close'"
     />
   </div>
 </template>
