@@ -67,6 +67,7 @@ button:focus {
   left: 0;
   background: rgb(255, 255, 255);
   display: flex;
+  z-index: 1;
 }
 .modal-window {
   // .modal-window_modal
@@ -74,7 +75,7 @@ button:focus {
   &_modal {
     padding: 10px;
     position: relative;
-    margin: 50px auto;
+    margin: 3% auto;
     width: 80%;
     border-radius: 11px;
     background: rgba(0, 0, 0, 0.096);
@@ -263,10 +264,32 @@ button:focus {
   max-height: 200px;
   text-overflow: clip;
   margin-bottom: 20px;
+  padding: 24px;
 }
 
 .type-task{
   margin-bottom: 20px;
+}
+
+
+
+// Todo  SELECTED TASK
+
+.selected_task {
+  display: flex;
+  flex-direction: column;
+ position: relative;
+ align-items: center;
+
+ 
+}
+.select-border{
+  border-width: 8px;
+  border-color: rgb(0, 0, 0);
+}
+.task-M_content{
+ 
+  width: 80%
 }
 
 
@@ -280,7 +303,6 @@ button:focus {
     grid-template-columns: repeat(5, minmax(0,1fr));
   }
   .task_name-content {
-    padding: 24px;
   }
 };
 

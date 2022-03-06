@@ -1,6 +1,6 @@
 <template>
   <button v-on:click="AddEmit()" type="button">
-    {{ title }} {{ icon }}
+    {{ title }}
     <!-- <svg
       class="svg-plus"
       xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +65,6 @@ export default {
     title: {
       type: String,
       default: "кнопка",
-    },
-    icon: {
-      type: String,
-      default: "",
     },
   },
 

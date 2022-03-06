@@ -1,28 +1,46 @@
 <template>
   <div class="container">
-    <!-- <add-new-task @add-task="addTask" /> -->
-    <hr />
-    <card-task />
+    <add-new-task @add-task="addTask" />
+    <div v-if="taskList.length">
+      <dl class="wrapper_tasks">
+        <div
+          v-for="(item, ind) in taskList"
+          v-bind:key="ind"
+          @click="select(item)"
+          class="container_task"
+          :class="{
+            'select-border': selectedTask === item,
+          }"
+        >
+          <div class="task_name-content">
+            <dt class="task-name">{{ item.name }}</dt>
+            <dd class="task-content">{{ item.content }}</dd>
+            <div class="type-task">{{}}</div>
+            <div class="date-add">Дата добавления: {{ item.dateAdd }}</div>
+            <div class="date-due">Датавыполнения: {{ item.dateDue }}</div>
+          </div>
+        </div>
+      </dl>
+      <hr />
+    </div>
     <selected-task @click="closeTask" v-if="this.selectedTask" />
   </div>
 </template>
 
 <script lang="ts">
-// import AddNewTask from "./AddNgewTask.vue";
+// import ButtonButton from "./ButtonButton.vue";
+import AddNewTask from "./AddNewTask.vue";
 import SelectedTask from "./SelectedTask.vue";
-import CardTask from "./CardTask.vue";
 
 export default {
-  components: { SelectedTask, CardTask },
+  components: { SelectedTask, AddNewTask },
   name: "Main",
-  //   props: {
-  //     task: {
-  //       name: "this.selectedTask.name",
-  //       content: "selectedTask.content",
-  //       dateAdd: new Date().toLocaleString(),
-  //       dateDue: "",
-  //     },
-  //   },
+  props: {
+    name: String,
+    content: String,
+    dateAdd: String,
+    dateDue: String,
+  },
 
   data() {
     return {
@@ -67,13 +85,11 @@ export default {
     closeModal() {
       this.showModal = false;
     },
-    // addTask(task) {
-    //   this.taskList.push({ ...this.taskList, ...task });
-    //   localStorage.setItem("todo-list", JSON.stringify(this.taskList));
-    //   console.log(this.taskList);
-    //   // this.showModal = false;
-    //   // this.task = {};
-    // },
+    addTask(task) {
+      this.taskList.push({ ...this.taskList, ...task });
+      localStorage.setItem("todo-list", JSON.stringify(this.taskList));
+      console.log(this.taskList);
+    },
   },
 };
 </script>
