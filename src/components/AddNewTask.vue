@@ -4,6 +4,7 @@
     <button-button
       class="button-add button"
       :title="titleAdd"
+      :type="'Add'"
       @added-task="openModal"
     />
     <div v-if="showModal" class="container-modal">
@@ -95,8 +96,8 @@ import ButtonButton from "./ButtonButton.vue";
 
 // import plusSing from "./plusSing.vue";
 export default {
-  components: { ButtonButton },
   name: "AddNewTask",
+  components: { ButtonButton },
   props: {
     titleSave: {
       type: String,
@@ -122,7 +123,6 @@ export default {
   data() {
     return {
       showModal: false,
-      // taskList: [],
       task: {
         name: "",
         content: "",
@@ -130,15 +130,6 @@ export default {
         dateDue: "",
       },
     };
-  },
-
-  created() {
-    const tasksData = localStorage.getItem("todo-list");
-    if (tasksData) {
-      // this.taskList = [...this.taskList, ...JSON.parse(tasksData)];
-      this.taskList = JSON.parse(tasksData);
-    }
-    // localStorage.clear();
   },
 
   methods: {
@@ -155,9 +146,6 @@ export default {
     },
 
     addTaskTask() {
-      this.taskList.push({ ...this.task });
-      localStorage.setItem("todo-list", JSON.stringify(this.taskList));
-      console.log(this.taskList);
       this.$emit("add-task", this.task);
 
       this.showModal = false;
@@ -166,5 +154,3 @@ export default {
   },
 };
 </script>
-
-<style src="../app.scss" lang="scss"></style>

@@ -1,5 +1,18 @@
-<script lang="ts">
-import { Vue } from "vue-property-decorator";
+<template>
+  <div class="container">
+    <TodoList />
+  </div>
+</template>
 
-export default class Home extends Vue {}
+<script lang="ts">
+import TodoList from "../components/TodoList.vue";
+
+export default {
+  name: "Home",
+  components: {
+    TodoList,
+  },
+};
 </script>
+
+<style src="../app.scss" lang="scss"></style>
