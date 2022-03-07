@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     closeTask() {
-      this.$emit("click");
+      this.$emit("eclick");
     },
   },
 };

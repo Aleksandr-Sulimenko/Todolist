@@ -66,8 +66,8 @@ export default {
 </script>
 
 <style>
-.Delete {
-}
+/* .Delete {
+} */
 .Delete:hover {
   background-color: rgb(126, 0, 0);
 }

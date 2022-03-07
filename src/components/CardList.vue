@@ -5,7 +5,7 @@
         <div
           v-for="(item, ind) in taskList"
           v-bind:key="ind"
-          @click="select(item)"
+          @click.stop="select(item)"
           class="container_task"
           :class="{
             'select-border': selectedTask === item,
@@ -15,6 +15,7 @@
             <div class="button_conteiner">
               <p></p>
               <ButtonButton
+                @added-task="hendleDelete(item)"
                 :title="''"
                 :color="'Delete'"
                 :type="'Close'"
@@ -34,7 +35,7 @@
       <hr />
     </div>
     <SelectedTask
-      @click="closeTask"
+      @eclick="closeTask"
       :task="selectedTask"
       v-if="Object.keys(selectedTask).length"
     />
@@ -59,10 +60,26 @@ export default {
   },
 
   methods: {
+    hendleDelete(taskRemove) {
+      console.log(this.taskList);
+
+      this.taskList = this.taskList.filter((item) => item !== taskRemove);
+      localStorage.setItem("todo-list", JSON.stringify(this.taskList));
+      //
+      // this.taskList.push([...this.taskList]);
+
+      // if (this.selectedTask) {
+      //   this.selectedTask = {};
+      // }
+    },
+
     closeTask() {
+      // console.log(this.selectedTask);
       this.selectedTask = {};
     },
     select(task) {
+      // console.log(task);
+
       this.selectedTask = task;
     },
   },

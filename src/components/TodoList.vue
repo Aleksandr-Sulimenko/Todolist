@@ -13,6 +13,7 @@ import CardList from "./CardList.vue";
 export default {
   name: "TodoList",
   components: { CardList, AddNewTask },
+  props: {},
 
   data() {
     return {
