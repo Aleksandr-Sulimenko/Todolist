@@ -14,7 +14,12 @@
           <div class="task_name-content">
             <div class="button_conteiner">
               <p></p>
-              <ButtonButton :title="''" :type="'Close'" class="button-delete" />
+              <ButtonButton
+                :title="''"
+                :color="'Delete'"
+                :type="'Close'"
+                class="button-delete"
+              />
             </div>
             <div class="conteiner_content">
               <div class="task-name">{{ item.name }}</div>

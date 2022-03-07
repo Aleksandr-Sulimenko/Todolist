@@ -17,6 +17,7 @@
           @added-task="closeModal"
           :title="''"
           :type="'Close'"
+          :color="'Close'"
         />
         <div class="task_title">
           <input
@@ -80,7 +81,7 @@
           </div>
         </div>
         <div class="save-remove">
-          <button-button
+          <ButtonButton
             class="button-modal button"
             :title="'Сохранить'"
             @added-task="addTaskTask()"

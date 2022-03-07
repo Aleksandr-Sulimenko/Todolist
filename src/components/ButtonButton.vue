@@ -1,7 +1,8 @@
 <template>
-  <button v-on:click="AddEmit()" type="button" :class="type">
+  <button v-on:click="AddEmit()" type="button" :class="color">
     {{ title }}
     <svg
+      class="svg-X"
       v-if="type === 'Close'"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -51,6 +52,10 @@ export default {
       type: String,
       default: "Default",
     },
+    color: {
+      type: String,
+      default: "Default",
+    },
   },
   methods: {
     AddEmit() {
@@ -61,9 +66,14 @@ export default {
 </script>
 
 <style>
-/* .Close {
-  background: red;
-} */
+.Delete {
+}
+.Delete:hover {
+  background-color: rgb(126, 0, 0);
+}
+.Close:hover {
+  background-color: transparent;
+}
 /* .Add {
   background: blue;
 } */
