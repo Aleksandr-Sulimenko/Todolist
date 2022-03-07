@@ -12,7 +12,7 @@
         <div class="modal-h1">
           <h1>Формы к заполнению</h1>
         </div>
-        <button-button
+        <ButtonButton
           class="modal-hide"
           @added-task="closeModal"
           :title="''"

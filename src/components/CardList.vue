@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="taskList.length">
-      <dl class="wrapper_tasks">
+      <div class="wrapper_tasks">
         <div
           v-for="(item, ind) in taskList"
           v-bind:key="ind"
@@ -12,14 +12,20 @@
           }"
         >
           <div class="task_name-content">
-            <dt class="task-name">{{ item.name }}</dt>
-            <dd class="task-description">{{ item.description }}</dd>
-            <div class="type-task">{{}}</div>
-            <div class="date-add">Дата добавления: {{ item.dateAdd }}</div>
-            <div class="date-due">Дата выполнения: {{ item.dateDue }}</div>
+            <div class="button_conteiner">
+              <p></p>
+              <ButtonButton :title="''" :type="'Close'" class="button-delete" />
+            </div>
+            <div class="conteiner_content">
+              <div class="task-name">{{ item.name }}</div>
+              <div class="task-description">{{ item.description }}</div>
+              <div class="type-task">{{}}</div>
+              <div class="date-added">Дата добавления: {{ item.dateAdd }}</div>
+              <div class="date-due">Дата выполнения: {{ item.dateDue }}</div>
+            </div>
           </div>
         </div>
-      </dl>
+      </div>
       <hr />
     </div>
     <SelectedTask
@@ -31,13 +37,14 @@
 </template>
 
 <script lang="ts">
+import ButtonButton from "./ButtonButton.vue";
 import SelectedTask from "./SelectedTask.vue";
-
 export default {
-  components: { SelectedTask },
+  components: { SelectedTask, ButtonButton },
   name: "Main",
   props: {
     taskList: [],
+    type: String,
   },
 
   data() {
