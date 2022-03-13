@@ -42,12 +42,31 @@
             </div>
             <div class="task-type_selection">
               <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">К выполнению</div>
+                <input
+                  v-model="task.typeTask"
+                  name="choice1"
+                  class="checkbox-task"
+                  id="typeChoice1"
+                  type="radio"
+                  value="К выполнению"
+                />
+
+                <label for="typeChoice1" class="checkbox-name"
+                  >К выполнению</label
+                >
               </div>
               <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Напоминание</div>
+                <input
+                  v-model="task.typeTask"
+                  name="choice1"
+                  class="checkbox-task"
+                  id="typeChoice2"
+                  type="radio"
+                  value="Напоминание"
+                />
+                <label for="typeChoice2" class="checkbox-name">
+                  Напоминание</label
+                >
               </div>
             </div>
           </div>
@@ -55,16 +74,43 @@
             <div class="task-type_text"><h3>Приоритет</h3></div>
             <div class="task-type_selection">
               <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Высокий</div>
+                <input
+                  v-model="task.priorityTask"
+                  id="priorityChoice1"
+                  value="Высокий"
+                  class="checkbox-task"
+                  type="radio"
+                  name="choice2"
+                />
+                <label for="priorityChoice1" class="checkbox-name"
+                  >Высокий</label
+                >
               </div>
               <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Средний</div>
+                <input
+                  v-model="task.priorityTask"
+                  id="priorityChoice2"
+                  value="Средний"
+                  class="checkbox-task"
+                  type="radio"
+                  name="choice2"
+                />
+                <label for="priorityChoice2" class="checkbox-name"
+                  >Средний</label
+                >
               </div>
               <div class="selection-checkbox">
-                <input class="checkbox-task" type="checkbox" />
-                <div class="checkbox-name">Низкий</div>
+                <input
+                  v-model="task.priorityTask"
+                  id="priorityChoice3"
+                  value="Низкий"
+                  class="checkbox-task"
+                  type="radio"
+                  name="choice2"
+                />
+                <label for="priorityChoice3" class="checkbox-name"
+                  >Низкий</label
+                >
               </div>
             </div>
           </div>
@@ -111,6 +157,8 @@ export default {
       task: {
         name: "",
         description: "",
+        typeTask: null,
+        priorityTask: null,
         dateAdd: new Date().toLocaleString(),
         dateDue: "",
       },
@@ -132,7 +180,7 @@ export default {
 
     addTaskTask() {
       this.$emit("add-task", this.task);
-
+      console.log(this.task);
       this.showModal = false;
       this.task = {};
     },

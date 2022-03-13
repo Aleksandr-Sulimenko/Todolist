@@ -2,11 +2,13 @@
   <div class="container">
     <AddNewTask @add-task="addTask" />
     <hr />
+    <!-- <FilterTask /> -->
     <CardList :taskList="taskList" />
   </div>
 </template>
 
 <script lang="ts">
+// import FilterTask from "./FilterTask.vue";
 import AddNewTask from "./AddNewTask.vue";
 import CardList from "./CardList.vue";
 
@@ -29,6 +31,7 @@ export default {
     }
     // localStorage.clear();
   },
+  computed: {},
 
   methods: {
     addTask(task) {

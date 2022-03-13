@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <FilterTask @Filter="filterList" />
+    <hr />
     <div v-if="taskList.length">
       <div class="wrapper_tasks">
         <div
@@ -24,8 +26,14 @@
             </div>
             <div class="conteiner_content">
               <div class="task-name">{{ item.name }}</div>
-              <div class="task-description">{{ item.description }}</div>
-              <div class="type-task">{{}}</div>
+              <hr v-if="item.description.length" />
+              <div v-if="item.description.length" class="task-description">
+                {{ item.description }}
+              </div>
+              <hr />
+              <div class="type-task">Тип: {{ item.typeTask }}</div>
+              <div class="type-task">Приоритет: {{ item.priorityTask }}</div>
+              <hr />
               <div class="date-added">Дата добавления: {{ item.dateAdd }}</div>
               <div class="date-due">Дата выполнения: {{ item.dateDue }}</div>
             </div>
@@ -43,23 +51,35 @@
 </template>
 
 <script lang="ts">
+import FilterTask from "./FilterTask.vue";
 import ButtonButton from "./ButtonButton.vue";
 import SelectedTask from "./SelectedTask.vue";
 export default {
-  components: { SelectedTask, ButtonButton },
-  name: "Main",
+  components: { SelectedTask, ButtonButton, FilterTask },
+  name: "CardList",
   props: {
     taskList: [],
     type: String,
+    // filter: String,
   },
 
   data() {
     return {
       selectedTask: {},
+      filter: "eee",
     };
   },
+  computed: {},
 
   methods: {
+    filterList(filter) {
+      // console.log(this.taskList);
+      alert(filter);
+
+      return this.taskList.filter((item) => item.name.includes(filter));
+      // console.log(this.taskList);
+    },
+
     hendleDelete(taskRemove) {
       console.log(this.taskList);
 
