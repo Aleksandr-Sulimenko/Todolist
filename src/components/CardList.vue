@@ -26,8 +26,8 @@
             </div>
             <div class="conteiner_content">
               <div class="task-name">{{ item.name }}</div>
-              <hr v-if="item.description.length" />
-              <div v-if="item.description.length" class="task-description">
+              <hr v-if="item.description" />
+              <div v-if="item.description" class="task-description">
                 {{ item.description }}
               </div>
               <hr />
