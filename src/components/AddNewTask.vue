@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>Хозяяяин времени</h1>
+    <!-- <h1>Хозяяяин времени</h1> -->
     <ButtonButton
       class="button-add button"
       :title="'Добавить'"

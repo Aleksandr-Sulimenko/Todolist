@@ -2,11 +2,12 @@
   <div class="container">
     <form action="">
       <p>Фильтер : {{ filter }}</p>
-      <input @input="filterS" v-model="filter" type="text" />
+      <input v-model="filter" type="text" />
     </form>
   </div>
 </template>
 <script lang="ts">
+import { mapGetters } from "vuex";
 export default {
   name: "FilterTask",
   //   props: {
@@ -17,13 +18,19 @@ export default {
       filter: "",
     };
   },
+  computed: {
+    ...mapGetters(["filterTask"]),
+  },
+
   methods: {
-    filterS() {
-      this.$emit("Filter", this.filter);
+    //  filterS() {
+    //    this.$emit("Filter", this.filterTask);
+    //  },
+  },
+  watch: {
+    filter() {
+      console.log(this.filterTask);
     },
   },
-  //   watch: {
-
-  //   },
 };
 </script>

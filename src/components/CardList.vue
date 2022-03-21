@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <FilterTask @Filter="filterList" />
+    <FilterTask />
     <hr />
     <div v-if="taskList.length">
       <div class="wrapper_tasks">
@@ -54,32 +54,32 @@
 import FilterTask from "./FilterTask.vue";
 import ButtonButton from "./ButtonButton.vue";
 import SelectedTask from "./SelectedTask.vue";
+import { mapGetters } from "vuex";
 export default {
   components: { SelectedTask, ButtonButton, FilterTask },
   name: "CardList",
   props: {
     taskList: [],
     type: String,
-    // filter: String,
   },
 
   data() {
     return {
       selectedTask: {},
-      filter: "eee",
+      // filter: "",
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters(["filterTask"]),
+    filterList() {
+      // console.log(this.taskList);
+      // alert(filter);
+      console.log(this.taskList);
+      return this.taskList.filter((item) => item.includes(this.filterTask));
+    },
+  },
 
   methods: {
-    filterList(filter) {
-      // console.log(this.taskList);
-      alert(filter);
-
-      return this.taskList.filter((item) => item.name.includes(filter));
-      // console.log(this.taskList);
-    },
-
     hendleDelete(taskRemove) {
       console.log(this.taskList);
 
