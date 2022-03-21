@@ -37,7 +37,7 @@ export default {
     addTask(task) {
       this.taskList.push({ ...this.taskList, ...task });
       localStorage.setItem("todo-list", JSON.stringify(this.taskList));
-      console.log(this.taskList);
+      // console.log(this.taskList);
     },
   },
 };

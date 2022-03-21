@@ -41,6 +41,7 @@
         </div>
       </div>
       <hr />
+      <span> КУ: {{ filterTask }}</span>
     </div>
     <SelectedTask
       @eclick="closeTask"
@@ -81,7 +82,7 @@ export default {
 
   methods: {
     hendleDelete(taskRemove) {
-      console.log(this.taskList);
+      // console.log(this.taskList);
 
       this.taskList = this.taskList.filter((item) => item !== taskRemove);
       localStorage.setItem("todo-list", JSON.stringify(this.taskList));

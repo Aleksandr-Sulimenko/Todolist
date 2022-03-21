@@ -10,7 +10,7 @@
     <div v-if="showModal" class="container-modal">
       <div class="modal-window_modal">
         <div class="modal-h1">
-          <h1>Формы к заполнению</h1>
+          <h3>Новая задача</h3>
         </div>
         <ButtonButton
           class="modal-hide"
@@ -19,7 +19,7 @@
           :type="'Close'"
           :color="'Close'"
         />
-        <div class="task_title">
+        <!-- <div class="task_title">
           <input
             v-model="task.name"
             class="input_task-title"
@@ -34,11 +34,54 @@
             type="text"
             placeholder="Текст задачи"
           ></textarea>
+        </div> -->
+        <div class="row">
+          <form class="col s8">
+            <div class="row">
+              <div class="input-field col s6">
+                <input
+                  v-model="task.name"
+                  id="input_name"
+                  type="text"
+                  maxlength="20"
+                />
+                <label for="input_name">Заголовок</label>
+                <span
+                  class="character-counter"
+                  style="float: right; font-size: 12px"
+                  ><font style="vertical-align: inherit"
+                    >{{ task.name.length }}/20</font
+                  >
+                  ></span
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea
+                  v-model="task.description"
+                  id="textarea2"
+                  class="materialize-textarea"
+                  data-length="1200"
+                ></textarea>
+                <label for="textarea2">Описание задачи</label>
+                <span
+                  class="character-counter"
+                  style="float: right; font-size: 12px"
+                  ><font style="vertical-align: inherit"
+                    ><font style="vertical-align: inherit"
+                      >{{ task.description.length }}/1200</font
+                    ></font
+                  ></span
+                >
+              </div>
+            </div>
+          </form>
         </div>
         <div class="task_type-container">
           <div class="task_type">
             <div class="task-type_text">
-              <h3>Тип задачи</h3>
+              <h6>Тип задачи</h6>
             </div>
             <div class="task-type_selection">
               <div class="selection-checkbox">
@@ -71,7 +114,7 @@
             </div>
           </div>
           <div class="task_type">
-            <div class="task-type_text"><h3>Приоритет</h3></div>
+            <div class="task-type_text"><h6>Приоритет</h6></div>
             <div class="task-type_selection">
               <div class="selection-checkbox">
                 <input
@@ -161,6 +204,8 @@ export default {
         priorityTask: null,
         dateAdd: new Date().toLocaleString(),
         dateDue: "",
+        id: Date.now(),
+        status: "active",
       },
     };
   },
@@ -180,9 +225,10 @@ export default {
 
     addTaskTask() {
       this.$emit("add-task", this.task);
-      console.log(this.task);
+      // console.log(this.task);
       this.showModal = false;
       this.task = {};
+      // console.log(this.refs.datepicker, this.task);
     },
   },
 };

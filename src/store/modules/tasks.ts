@@ -10,6 +10,8 @@ export default {
   actions: {},
   getters:{
     filterTask(state) {
+      console.log(state.filter);
+      
       return state.filter;
     }
   },
