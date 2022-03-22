@@ -2,18 +2,18 @@
   <div class="container">
     <AddNewTask />
     <!-- <FilterTask /> -->
-    <CardList :taskList="taskList" />
+    <TaskList :taskList="taskList" />
   </div>
 </template>
 
 <script lang="ts">
 // import FilterTask from "./FilterTask.vue";
 import AddNewTask from "./AddNewTask.vue";
-import CardList from "./CardList.vue";
+import TaskList from "./TaskList.vue";
 
 export default {
   name: "TodoList",
-  components: { CardList, AddNewTask },
+  components: { TaskList, AddNewTask },
   props: {},
 
   data() {

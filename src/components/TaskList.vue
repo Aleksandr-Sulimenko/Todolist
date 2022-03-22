@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <FilterTask />
-    <div v-if="taskList.length">
+    <FilterTask :filter="filter" />
+    <div v-if="filterList.length">
       <div class="wrapper_tasks">
         <div
-          v-for="(item, ind) in taskList"
+          v-for="(item, ind) in filterList"
           v-bind:key="ind"
           @click.stop="select(item)"
           class="container_task"
@@ -40,7 +40,7 @@
         </div>
       </div>
       <hr />
-      <span> КУ: {{ filterTask }}</span>
+      <!-- <span> КУ: {{ filterTask }}</span> -->
     </div>
     <SelectedTask
       @eclick="closeTask"
@@ -55,9 +55,10 @@ import FilterTask from "./FilterTask.vue";
 import ButtonButton from "./ButtonButton.vue";
 import SelectedTask from "./SelectedTask.vue";
 import { mapGetters } from "vuex";
+// import { filter } from "vue/types/umd";
 export default {
   components: { SelectedTask, ButtonButton, FilterTask },
-  name: "CardList",
+  name: "TaskList",
   props: {
     // taskList: [],
     type: String,
@@ -66,23 +67,31 @@ export default {
   data() {
     return {
       selectedTask: {},
-      // filter: "",
+      filter: { name: "" },
     };
   },
   computed: {
-    ...mapGetters(["filterTask"]),
+    // ...mapGetters(["filterTask"]),
     ...mapGetters(["taskList"]),
     ...mapGetters(["deleteTask"]),
 
     filterList() {
       // console.log(this.taskList);
       // alert(filter);
-
-      return this.taskList.filter((item) => item.includes(this.filterTask));
+      if (this.filter.name.length >= 3) {
+        return this.taskList.filter((item) =>
+          item.name.includes(this.filter.name)
+        );
+      }
+      return this.taskList;
     },
   },
 
   methods: {
+    // changeFilter(filter) {
+    //   this.filter = filter;
+    // },
+
     hendleDelete() {
       // console.log(this.taskList);
       this.$store.dispatch("deleteTask", this.selectedTask);
@@ -103,6 +112,11 @@ export default {
       // console.log(task);
 
       this.selectedTask = task;
+    },
+  },
+  watch: {
+    filter() {
+      console.log(this.filter);
     },
   },
 };

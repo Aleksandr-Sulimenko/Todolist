@@ -1,7 +1,7 @@
 <template>
   <div class="container row bg-color">
     <form class="inline input-field col s6">
-      <input id="idFilter" v-model="filter" type="text" />
+      <input id="idFilter" v-model="filter.name" type="text" />
       <label for="idFilter"> Фильтр</label>
       <span class="helper-text">{{ filter }}</span>
     </form>
@@ -11,12 +11,12 @@
 import { mapGetters } from "vuex";
 export default {
   name: "FilterTask",
-  //   props: {
-  //     taskList: [],
-  //   },
+  props: {
+    filter: {},
+  },
   data() {
     return {
-      filter: "",
+      // filter: "",
     };
   },
   computed: {
@@ -31,14 +31,14 @@ export default {
   },
 
   methods: {
-    //  filterS() {
-    //    this.$emit("Filter", this.filterTask);
-    //  },
+    // changeFilter() {
+    //   this.$emit("filter", this.filter);
+    // },
   },
 
   watch: {
     filter() {
-      console.log(this.taskList);
+      // console.log(this.filter);
     },
   },
 };
