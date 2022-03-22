@@ -21,6 +21,7 @@ export default {
   },
   computed: {
     ...mapGetters(["filterTask"]),
+    // ...mapGetters(["taskList"]),
     // filterList() {
     //   console.log(this.filterList);
     //   // alert(filter);
@@ -37,7 +38,7 @@ export default {
 
   watch: {
     filter() {
-      console.log(this.filterTask);
+      console.log(this.taskList);
     },
   },
 };

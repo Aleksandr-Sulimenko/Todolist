@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="AddEmit()" type="button" :class="color">
+  <button v-on:click.stop="AddEmit()" type="button" :class="color">
     {{ title }}
     <svg
       class="svg-X"
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     AddEmit() {
-      this.$emit("added-task");
+      this.$emit("eClick");
     },
   },
 };
@@ -69,6 +69,9 @@ export default {
 /* .Delete {
 } */
 .Delete:hover {
+  background-color: rgb(126, 0, 0);
+}
+.Delete:focus {
   background-color: rgb(126, 0, 0);
 }
 .Close:hover {

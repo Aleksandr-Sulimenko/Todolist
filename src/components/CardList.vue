@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <FilterTask />
-    <hr />
     <div v-if="taskList.length">
       <div class="wrapper_tasks">
         <div
@@ -17,7 +16,7 @@
             <div class="button_conteiner">
               <p></p>
               <ButtonButton
-                @added-task="hendleDelete(item)"
+                @eClick="hendleDelete(item)"
                 :title="''"
                 :color="'Delete'"
                 :type="'Close'"
@@ -60,7 +59,7 @@ export default {
   components: { SelectedTask, ButtonButton, FilterTask },
   name: "CardList",
   props: {
-    taskList: [],
+    // taskList: [],
     type: String,
   },
 
@@ -72,26 +71,28 @@ export default {
   },
   computed: {
     ...mapGetters(["filterTask"]),
+    ...mapGetters(["taskList"]),
+    ...mapGetters(["deleteTask"]),
+
     filterList() {
       // console.log(this.taskList);
       // alert(filter);
-      console.log(this.taskList);
+
       return this.taskList.filter((item) => item.includes(this.filterTask));
     },
   },
 
   methods: {
-    hendleDelete(taskRemove) {
+    hendleDelete() {
       // console.log(this.taskList);
+      this.$store.dispatch("deleteTask", this.selectedTask);
 
-      this.taskList = this.taskList.filter((item) => item !== taskRemove);
-      localStorage.setItem("todo-list", JSON.stringify(this.taskList));
       //
       // this.taskList.push([...this.taskList]);
 
-      // if (this.selectedTask) {
-      //   this.selectedTask = {};
-      // }
+      if (this.selectedTask) {
+        this.selectedTask = {};
+      }
     },
 
     closeTask() {

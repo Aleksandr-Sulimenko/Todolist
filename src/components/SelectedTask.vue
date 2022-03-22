@@ -5,7 +5,7 @@
     <div class="date-add">Дата добавления: {{ task.dateAdd }}</div>
     <div class="date-due">Дата выполнения: {{ task.dateDue }}</div>
     <button-button
-      v-on:added-task="closeTask"
+      v-on:eClick="closeTask"
       class="button button-modal"
       :title="'Закрыть'"
     />

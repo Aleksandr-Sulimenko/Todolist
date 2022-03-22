@@ -5,7 +5,7 @@
       class="button-add button"
       :title="'Добавить'"
       :type="'Add'"
-      @added-task="openModal"
+      @eClick="openModal"
     />
     <div v-if="showModal" class="container-modal">
       <div class="modal-window_modal">
@@ -14,7 +14,7 @@
         </div>
         <ButtonButton
           class="modal-hide"
-          @added-task="closeModal"
+          @eClick="closeModal"
           :title="''"
           :type="'Close'"
           :color="'Close'"
@@ -46,14 +46,16 @@
                   maxlength="20"
                 />
                 <label for="input_name">Заголовок</label>
-                <span
+                <!-- <span
                   class="character-counter"
                   style="float: right; font-size: 12px"
-                  ><font style="vertical-align: inherit"
-                    >{{ task.name.length }}/20</font
-                  >
+                  ><font style="vertical-align: inherit">
+                    <font style="vertical-align: inherit">
+                      {{ task.name.length }}/20
+                    </font>
+                  </font>
                   ></span
-                >
+                > -->
               </div>
             </div>
             <div class="row">
@@ -65,14 +67,14 @@
                   data-length="1200"
                 ></textarea>
                 <label for="textarea2">Описание задачи</label>
-                <span
+                <!-- <span
                   class="character-counter"
                   style="float: right; font-size: 12px"
                   ><font style="vertical-align: inherit"
                     ><font style="vertical-align: inherit"
                       >{{ task.description.length }}/1200</font
                     ></font
-                  ></span
+                  ></span -->
                 >
               </div>
             </div>
@@ -173,11 +175,11 @@
           <ButtonButton
             class="button-modal button"
             :title="'Сохранить'"
-            @added-task="addTaskTask()"
+            @eClick="addTaskTask()"
           />
           <ButtonButton
             class="button-modal button"
-            @added-task="cleaningModal"
+            @eClick="cleaningModal"
             :title="'Очистить'"
           />
         </div>
@@ -224,7 +226,8 @@ export default {
     },
 
     addTaskTask() {
-      this.$emit("add-task", this.task);
+      this.$store.dispatch("newTask", this.task);
+      // this.$emit("add-task", this.task);
       // console.log(this.task);
       this.showModal = false;
       this.task = {};

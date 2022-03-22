@@ -1,7 +1,6 @@
 <template>
   <div class="container">
-    <AddNewTask @add-task="addTask" />
-    <hr />
+    <AddNewTask />
     <!-- <FilterTask /> -->
     <CardList :taskList="taskList" />
   </div>
@@ -23,22 +22,22 @@ export default {
     };
   },
 
-  created() {
-    const tasksData = localStorage.getItem("todo-list");
-    if (tasksData) {
-      // this.taskList = [...this.taskList, ...JSON.parse(tasksData)];
-      this.taskList = JSON.parse(tasksData);
-    }
-    // localStorage.clear();
-  },
+  // created() {
+  //   const tasksData = localStorage.getItem("todo-list");
+  //   if (tasksData) {
+  //     // this.taskList = [...this.taskList, ...JSON.parse(tasksData)];
+  //     this.taskList = JSON.parse(tasksData);
+  //   }
+  //   // localStorage.clear();
+  // },
   computed: {},
 
-  methods: {
-    addTask(task) {
-      this.taskList.push({ ...this.taskList, ...task });
-      localStorage.setItem("todo-list", JSON.stringify(this.taskList));
-      // console.log(this.taskList);
-    },
-  },
+  // methods: {
+  //   addTask(task) {
+  //     // this.taskList.push({ ...this.taskList, ...task });
+  //     // localStorage.setItem("todo-list", JSON.stringify(this.taskList));
+  //     console.log(task);
+  //   },
+  // },
 };
 </script>
