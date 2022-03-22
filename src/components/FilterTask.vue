@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts">
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 export default {
   name: "FilterTask",
   props: {
@@ -18,9 +18,6 @@ export default {
     return {
       // filter: "",
     };
-  },
-  computed: {
-    ...mapGetters(["filterTask"]),
   },
 
   methods: {

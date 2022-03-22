@@ -78,9 +78,9 @@ export default {
       // console.log(this.taskList);
       // alert(filter);
       if (this.filter.name.length >= 3) {
-        return this.taskList.filter((item) =>
-          item.name.includes(this.filter.name)
-        );
+        return this.taskList
+          .filter((item) => item.name.includes(this.filter.name))
+          .slice(0, 5);
       }
       return this.taskList;
     },
