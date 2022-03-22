@@ -71,7 +71,6 @@ export default {
     };
   },
   computed: {
-    // ...mapGetters(["filterTask"]),
     ...mapGetters(["taskList"]),
     ...mapGetters(["deleteTask"]),
 

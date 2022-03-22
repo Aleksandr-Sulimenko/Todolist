@@ -1,6 +1,5 @@
 export default {
   state: {
-    filter: "",
     taskList: JSON.parse(localStorage.getItem("todo-list")),
   },
   mutations: {
@@ -14,9 +13,6 @@ export default {
       state.taskList = state.taskList.filter((item) => item !== taskRemove);
       localStorage.setItem("todo-list", JSON.stringify(state.taskList));
     },
-    // newFilter(state, filterNew ){
-    //   state.filter = filterNew
-    // }
   },
   actions: {
     newTask({ commit }, task) {
@@ -34,10 +30,6 @@ export default {
     },
     deleteTask(state) {
       return state.taskList;
-    },
-    filterTask(state) {
-      console.log(state.filter);
-      return state.filter;
     },
   },
 };

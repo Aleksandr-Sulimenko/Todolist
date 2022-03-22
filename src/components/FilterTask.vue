@@ -3,7 +3,7 @@
     <form class="inline input-field col s6">
       <input id="idFilter" v-model="filter.name" type="text" />
       <label for="idFilter"> Фильтр</label>
-      <span class="helper-text">{{ filter }}</span>
+      <!-- <span class="helper-text">{{ filter }}</span> -->
     </form>
   </div>
 </template>
@@ -21,13 +21,6 @@ export default {
   },
   computed: {
     ...mapGetters(["filterTask"]),
-    // ...mapGetters(["taskList"]),
-    // filterList() {
-    //   console.log(this.filterList);
-    //   // alert(filter);
-    //   console.log(this.taskList);
-
-    // },
   },
 
   methods: {
