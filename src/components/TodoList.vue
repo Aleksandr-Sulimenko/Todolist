@@ -2,6 +2,7 @@
   <div class="container">
     <AddNewTask />
     <!-- <FilterTask /> -->
+    <TaskListTwo />
     <TaskList :taskList="taskList" />
   </div>
 </template>
@@ -10,10 +11,10 @@
 // import FilterTask from "./FilterTask.vue";
 import AddNewTask from "./AddNewTask.vue";
 import TaskList from "./TaskList.vue";
-
+import TaskListTwo from "./TaskListTwo.vue";
 export default {
   name: "TodoList",
-  components: { TaskList, AddNewTask },
+  components: { TaskList, AddNewTask, TaskListTwo },
   props: {},
 
   data() {

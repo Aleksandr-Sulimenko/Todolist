@@ -204,7 +204,7 @@ export default {
         description: "",
         typeTask: null,
         priorityTask: null,
-        dateAdd: new Date().toLocaleString(),
+        dateAdd: new Date().toLocaleDateString(),
         dateDue: "",
         id: Date.now(),
         status: "active",
