@@ -27,51 +27,24 @@
           <td>{{ item.status }}</td>
           <td>{{ new Date( item.dateDue ).toLocaleDateString(),}}</td>
           <td>
-            <ButtonButton :title="'Открыть'" />
+            <router-link
+              teg="button"
+              class="btn-small"
+              :to="'/task/ + task.id'"
+            >
+              Открыть
+            </router-link>
           </td>
           <td>
-            <ButtonButton @eClick="handDelete(item)" :title="'Удалить'" />
+            <ButtonButton
+              class="btn-small"
+              @eClick="handDelete(item)"
+              :title="'Удалить'"
+            />
             <!-- todo доработать метод handDelete без select -->
           </td>
         </tr>
       </tbody>
-      <!-- <div class="wrapper_tasks-two">
-        <div
-          v-for="(item, ind) in filterList"
-          v-bind:key="ind"
-          @click.stop="select(item)"
-          class="col s12 container_task"
-          :class="{
-            'select-border': selectedTask === item,
-          }"
-        >
-          <div class="task_name-content">
-            <div class="button_conteiner">
-              <p></p>
-              <ButtonButton
-                @eClick="hendleDelete(item)"
-                :title="''"
-                :color="'Delete'"
-                :type="'Close'"
-                class="button-delete"
-              />
-            </div>
-            <div class="conteiner_content">
-              <div class="task-name">{{ item.name }}</div>
-              <hr v-if="item.description" />
-              <div v-if="item.description" class="task-description">
-                {{ item.description }}
-              </div>
-              <hr />
-              <div class="type-task">Тип: {{ item.typeTask }}</div>
-              <div class="type-task">Приоритет: {{ item.priorityTask }}</div>
-              <hr />
-              <div class="date-added">Дата добавления: {{ item.dateAdd }}</div>
-              <div class="date-due">Дата выполнения: {{ item.dateDue }}</div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </table>
     <p v-else>Нет задач</p>
     <SelectedTask

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-
+import OpenTask from "../views/OpenTask.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -10,6 +10,12 @@ const routes = [
     name: "home",
     component: Home,
   },
+  {
+    path: "/task/:id",
+    name: "openTask",
+    component: OpenTask,
+  },
+    
 ];
 
 const router = new VueRouter({
