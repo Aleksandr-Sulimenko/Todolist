@@ -40,6 +40,7 @@
             <div class="row">
               <div class="input-field col s6">
                 <input
+                  required
                   v-model="task.name"
                   id="input_name"
                   type="text"

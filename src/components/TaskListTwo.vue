@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <FilterTask :filter="filter" />
+    <hr />
+    <h5>Список задач</h5>
     <table v-if="filterList.length">
       <thead>
         <tr>
@@ -24,6 +26,13 @@
           </td>
           <td>{{ item.status }}</td>
           <td>{{ new Date( item.dateDue ).toLocaleDateString(),}}</td>
+          <td>
+            <ButtonButton :title="'Открыть'" />
+          </td>
+          <td>
+            <ButtonButton @eClick="handDelete(item)" :title="'Удалить'" />
+            <!-- todo доработать метод handDelete без select -->
+          </td>
         </tr>
       </tbody>
       <!-- <div class="wrapper_tasks-two">
@@ -65,7 +74,6 @@
       </div> -->
     </table>
     <p v-else>Нет задач</p>
-    <hr />
     <SelectedTask
       @eclick="closeTask"
       :task="selectedTask"
@@ -76,12 +84,12 @@
 
 <script lang="ts">
 import FilterTask from "./FilterTask.vue";
-// import ButtonButton from "./ButtonButton.vue";
+import ButtonButton from "./ButtonButton.vue";
 import SelectedTask from "./SelectedTask.vue";
 import { mapGetters } from "vuex";
 // import { filter } from "vue/types/umd";
 export default {
-  components: { SelectedTask, FilterTask },
+  components: { SelectedTask, ButtonButton, FilterTask },
   name: "TaskListTwo",
   props: {
     // taskList: [],

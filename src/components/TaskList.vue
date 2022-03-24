@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <FilterTask :filter="filter" />
+    <hr />
+    <h5>Список задач</h5>
     <div v-if="filterList.length">
       <div class="wrapper_tasks">
         <div
