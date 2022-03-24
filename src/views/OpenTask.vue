@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <h2>jkl;</h2>
-    <!-- <h1>{{ task.title }}</h1> -->
+    <h2>{{ task.name }}</h2>
+    <h4>{{ task.description }}</h4>
   </div>
 </template>
 
 <script lang="ts">
-// import { mapGetters } from 'vuex';
+// import { mapGetters } from "vuex";
 export default {
   computed: {
     // ...mapGetters(["taskList"]),
     task() {
-      console.log(this.route.task.params.id);
-      return this.$store.getters.taskById(this.route.task.params.id);
+      console.log(typeof this.$route.params.id);
+      return this.$store.getters.taskById(+this.$route.params.id);
     },
   },
 };

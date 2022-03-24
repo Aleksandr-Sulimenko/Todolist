@@ -3,18 +3,18 @@
     <AddNewTask />
     <!-- <FilterTask /> -->
     <TaskListTwo />
-    <TaskList :taskList="taskList" />
+    <!-- <TaskList :taskList="taskList" /> -->
   </div>
 </template>
 
 <script lang="ts">
 // import FilterTask from "./FilterTask.vue";
 import AddNewTask from "./AddNewTask.vue";
-import TaskList from "./TaskList.vue";
+// import TaskList from "./TaskList.vue";
 import TaskListTwo from "./TaskListTwo.vue";
 export default {
   name: "TodoList",
-  components: { TaskList, AddNewTask, TaskListTwo },
+  components: { AddNewTask, TaskListTwo },
   props: {},
 
   data() {

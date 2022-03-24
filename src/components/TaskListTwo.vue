@@ -81,8 +81,7 @@ export default {
     ...mapGetters(["deleteTask"]),
 
     filterList() {
-      console.log(this.taskList);
-      // alert(filter);
+      // console.log(this.taskList);
       if (this.filter.name.length >= 3) {
         return this.taskList
           .filter((item) => item.name.includes(this.filter.name))
@@ -98,8 +97,8 @@ export default {
     // },
 
     hendleDelete() {
-      console.log(this.taskList);
-      this.$store.dispatch("deleteTask", this.selectedTask);
+      console.log(typeof this.task.id);
+      this.$store.dispatch("deleteTask", this.task.id);
 
       //
       // this.taskList.push([...this.taskList]);
@@ -115,7 +114,6 @@ export default {
     },
     select(task) {
       this.selectedTask = task;
-      console.log(task.id);
     },
   },
   // watch: {

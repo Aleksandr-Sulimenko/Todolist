@@ -10,7 +10,7 @@ export default {
     },
 
     deleteTask(state, taskRemove) {
-      state.taskList = state.taskList.filter((item) => item !== taskRemove);
+      state.taskList = state.taskList.filter((item) => item.id !== taskRemove.id);
       localStorage.setItem("taskList", JSON.stringify(state.taskList));
     },
   },
