@@ -30,7 +30,8 @@
             <router-link
               teg="button"
               class="btn-small"
-              :to="'/task/ + task.id'"
+              :to="'/task/' + item.id"
+              active-class="activ"
             >
               Открыть
             </router-link>
@@ -80,7 +81,7 @@ export default {
     ...mapGetters(["deleteTask"]),
 
     filterList() {
-      // console.log(this.taskList);
+      console.log(this.taskList);
       // alert(filter);
       if (this.filter.name.length >= 3) {
         return this.taskList
@@ -97,7 +98,7 @@ export default {
     // },
 
     hendleDelete() {
-      // console.log(this.taskList);
+      console.log(this.taskList);
       this.$store.dispatch("deleteTask", this.selectedTask);
 
       //
@@ -113,16 +114,15 @@ export default {
       this.selectedTask = {};
     },
     select(task) {
-      // console.log(task);
-
       this.selectedTask = task;
+      console.log(task.id);
     },
   },
-  watch: {
-    filter() {
-      console.log(this.filter);
-    },
-  },
+  // watch: {
+  //   filter() {
+  //     console.log(this.filter);
+  //   },
+  // },
 };
 </script>
 <style lang="scss">

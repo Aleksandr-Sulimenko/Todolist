@@ -1,17 +1,17 @@
 export default {
   state: {
-    taskList: JSON.parse(localStorage.getItem("todo-list")),
+    taskList: JSON.parse(localStorage.getItem("taskList")|| "[]"),
   },
   mutations: {
     newTask(state, task) {
       state.taskList.push(task);
-      localStorage.setItem("todo-list", JSON.stringify(state.taskList));
+      localStorage.setItem("taskList", JSON.stringify(state.taskList));
       // console.log(state.taskList);
     },
 
     deleteTask(state, taskRemove) {
       state.taskList = state.taskList.filter((item) => item !== taskRemove);
-      localStorage.setItem("todo-list", JSON.stringify(state.taskList));
+      localStorage.setItem("taskList", JSON.stringify(state.taskList));
     },
   },
   actions: {
@@ -31,5 +31,9 @@ export default {
     deleteTask(state) {
       return state.taskList;
     },
+
+    taskById: s => id => s.taskList.find(task => task.id === id)
+    
+    
   },
 };

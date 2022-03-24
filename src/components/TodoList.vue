@@ -24,7 +24,7 @@ export default {
   },
 
   // created() {
-  //   const tasksData = localStorage.getItem("todo-list");
+  //   const tasksData = localStorage.getItem("taskList");
   //   if (tasksData) {
   //     // this.taskList = [...this.taskList, ...JSON.parse(tasksData)];
   //     this.taskList = JSON.parse(tasksData);
@@ -36,7 +36,7 @@ export default {
   // methods: {
   //   addTask(task) {
   //     // this.taskList.push({ ...this.taskList, ...task });
-  //     // localStorage.setItem("todo-list", JSON.stringify(this.taskList));
+  //     // localStorage.setItem("taskList", JSON.stringify(this.taskList));
   //     console.log(task);
   //   },
   // },

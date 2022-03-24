@@ -230,6 +230,7 @@ export default {
       this.$store.dispatch("newTask", this.task);
       // this.$emit("add-task", this.task);
       // console.log(this.task);
+      // console.log(this.task.id);
       this.showModal = false;
       this.task = {};
       // console.log(this.refs.datepicker, this.task);
