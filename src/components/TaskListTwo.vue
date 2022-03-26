@@ -43,46 +43,35 @@
               :title="'Удалить'"
               :color="'Delete'"
             />
-            <!-- todo доработать метод handDelete без select -->
           </td>
         </tr>
       </tbody>
     </table>
     <p v-else>Нет задач</p>
-    <!-- <SelectedTask
-      @eclick="closeTask"
-      :task="selectedTask"
-      v-if="Object.keys(selectedTask).length"
-    /> -->
   </div>
 </template>
 
 <script lang="ts">
 import FilterTask from "./FilterTask.vue";
 import ButtonButton from "./ButtonButton.vue";
-// import SelectedTask from "./SelectedTask.vue";
 import { mapGetters } from "vuex";
 // import { filter } from "vue/types/umd";
 export default {
   components: { ButtonButton, FilterTask },
   name: "TaskListTwo",
   props: {
-    // taskList: [],
     type: String,
   },
 
   data() {
     return {
-      // selectedTask: {},
       filter: { name: "" },
     };
   },
   computed: {
     ...mapGetters(["taskList"]),
-    // ...mapGetters(["deleteTask"]),
 
     filterList() {
-      // console.log(this.taskList);
       if (this.filter.name.length >= 3) {
         return this.taskList
           .filter((item) => item.name.includes(this.filter.name))
@@ -93,40 +82,15 @@ export default {
   },
 
   methods: {
-    // changeFilter(filter) {
-    //   this.filter = filter;
-    // },
-
     handleDelete(item) {
       const index = this.taskList.indexOf(item);
       this.$store.dispatch("deleteTask", index);
-
-      //this.store.getters.taskById(+this.$route.params.id);
-      // this.taskList.push([...this.taskList]);
-
-      // if (this.selectedTask) {
-      //   this.selectedTask = {};
-      // }
     },
-
-    // closeTask() {
-    //   // console.log(this.selectedTask);
-    //   this.selectedTask = {};
-    // },
-    // select(task) {
-    //   this.selectedTask = task;
-    // },
   },
-  // watch: {
-  //   filter() {
-  //     console.log(this.filter);
-  //   },
-  // },
 };
 </script>
 <style lang="scss">
 .descript {
-  //   max-width: 30%;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -17,7 +17,6 @@ export default {
   actions: {
     newTask({ commit }, task) {
       commit("newTask", task);
-      // console.log(task);
     },
     deleteTask({ commit }, removeTask) {
       commit("deleteTask", removeTask);
@@ -25,7 +24,6 @@ export default {
   },
   getters: {
     taskList(state) {
-      // console.log(state.taskList);
       return state.taskList;
     },
     deleteTask(state) {

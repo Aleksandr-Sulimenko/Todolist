@@ -42,7 +42,6 @@
         </div>
       </div>
       <hr />
-      <!-- <span> КУ: {{ filterTask }}</span> -->
     </div>
     <SelectedTask
       @eclick="closeTask"
@@ -62,7 +61,6 @@ export default {
   components: { SelectedTask, ButtonButton, FilterTask },
   name: "TaskList",
   props: {
-    // taskList: [],
     type: String,
   },
 
@@ -74,11 +72,8 @@ export default {
   },
   computed: {
     ...mapGetters(["taskList"]),
-    // ...mapGetters(["deleteTask"]),
 
     filterList() {
-      // console.log(this.taskList);
-      // alert(filter);
       if (this.filter.name.length >= 3) {
         return this.taskList
           .filter((item) => item.name.includes(this.filter.name))
@@ -89,16 +84,9 @@ export default {
   },
 
   methods: {
-    // changeFilter(filter) {
-    //   this.filter = filter;
-    // },
-
-    hendleDelete() {
-      // console.log(this.taskList);
-      this.$store.dispatch("deleteTask", this.selectedTask);
-
-      //
-      // this.taskList.push([...this.taskList]);
+    hendleDelete(item) {
+      const index = this.taskList.indexOf(item);
+      this.$store.dispatch("deleteTask", index);
 
       if (this.selectedTask) {
         this.selectedTask = {};
@@ -106,18 +94,10 @@ export default {
     },
 
     closeTask() {
-      // console.log(this.selectedTask);
       this.selectedTask = {};
     },
     select(task) {
-      // console.log(task);
-
       this.selectedTask = task;
-    },
-  },
-  watch: {
-    filter() {
-      console.log(this.filter);
     },
   },
 };

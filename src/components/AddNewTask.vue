@@ -28,9 +28,9 @@
                   type="text"
                   maxlength="20"
                 />
-                <span style="float: right; font-size: 12px"
+                <!-- <span style="float: right; font-size: 12px"
                   >{{ task.name.length }}/20</span
-                >
+                > -->
                 <span>{{ error }}</span>
                 <label for="input_name">Заголовок</label>
               </div>
@@ -44,9 +44,9 @@
                   data-length="1200"
                 ></textarea>
                 <label for="textarea2">Описание задачи</label>
-                <span style="float: right; font-size: 12px"
+                <!-- <span style="float: right; font-size: 12px"
                   >{{ task.description.length }}/1200</span
-                >
+                > -->
               </div>
             </div>
           </div>
