@@ -1,6 +1,5 @@
 <template>
   <section>
-    <!-- <h1>Хозяяяин времени</h1> -->
     <ButtonButton
       class="button-add button"
       :title="'Добавить'"
@@ -19,22 +18,6 @@
           :type="'Close'"
           :color="'Close'"
         />
-        <!-- <div class="task_title">
-          <input
-            v-model="task.name"
-            class="input_task-title"
-            type="text"
-            placeholder="Заголовок задачи"
-          />
-        </div>
-        <div class="task_text">
-          <textarea
-            v-model="task.description"
-            class="input_task-text"
-            type="text"
-            placeholder="Текст задачи"
-          ></textarea>
-        </div> -->
         <div class="row">
           <div class="col s8">
             <div class="row">
@@ -45,19 +28,11 @@
                   type="text"
                   maxlength="20"
                 />
-                <span>{{ task.description.length }}/20</span>
+                <span style="float: right; font-size: 12px"
+                  >{{ task.name.length }}/20</span
+                >
                 <span>{{ error }}</span>
                 <label for="input_name">Заголовок</label>
-                <!-- <span
-                  class="character-counter"
-                  style="float: right; font-size: 12px"
-                  ><font style="vertical-align: inherit">
-                    <font style="vertical-align: inherit">
-                      {{ task.name.length }}/20
-                    </font>
-                  </font>
-                  ></span
-                > -->
               </div>
             </div>
             <div class="row">
@@ -69,15 +44,9 @@
                   data-length="1200"
                 ></textarea>
                 <label for="textarea2">Описание задачи</label>
-                <span>{{ task.description.length }}/1200</span>
-                <!-- <span
-                  class="character-counter"
-                  style="float: right; font-size: 12px"
-                  ><font style="vertical-align: inherit"
-                    ><font style="vertical-align: inherit">{{ task.description.length }}/1200</font
-                    ></font
-                  ></span
-                > -->
+                <span style="float: right; font-size: 12px"
+                  >{{ task.description.length }}/1200</span
+                >
               </div>
             </div>
           </div>
@@ -197,7 +166,6 @@
 <script lang="ts">
 import ButtonButton from "./ButtonButton.vue";
 
-// import plusSing from "./plusSing.vue";
 export default {
   name: "AddNewTask",
   components: { ButtonButton },
@@ -241,12 +209,9 @@ export default {
       this.task.dateAdd = new Date().toLocaleDateString();
       this.$store.dispatch("newTask", this.task);
       this.$emit("add-task", this.task);
-      // console.log(this.task);
-      // console.log(this.task.id);
       this.showModal = false;
       this.task = {};
       this.error = "";
-      // console.log(this.refs.datepicker, this.task);
     },
   },
 };
