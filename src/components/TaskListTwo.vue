@@ -97,8 +97,9 @@ export default {
     //   this.filter = filter;
     // },
 
-    handleDelete(task) {
-      this.$store.dispatch("deleteTask", task);
+    handleDelete(item) {
+      const index = this.taskList.indexOf(item);
+      this.$store.dispatch("deleteTask", index);
 
       //this.store.getters.taskById(+this.$route.params.id);
       // this.taskList.push([...this.taskList]);

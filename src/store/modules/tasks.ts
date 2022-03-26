@@ -9,10 +9,8 @@ export default {
       // console.log(state.taskList);
     },
 
-    deleteTask(state, taskRemove) {
-      state.taskList = state.taskList.filter(
-        (item) => item !== taskRemove
-      );
+    deleteTask(state, index) {
+      state.taskList.splice(index , 1)
       localStorage.setItem("taskList", JSON.stringify(state.taskList));
     },
   },
