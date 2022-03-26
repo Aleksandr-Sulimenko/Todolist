@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h2>{{ task.name }}</h2>
-    <h4>{{ task.description }}</h4>
+    <h2>{{ Task.name }}</h2>
+    <h4>{{ Task.description }}</h4>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 export default {
   computed: {
     // ...mapGetters(["taskList"]),
-    task() {
+    Task() {
       console.log(typeof this.$route.params.id);
       return this.$store.getters.taskById(+this.$route.params.id);
     },

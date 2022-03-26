@@ -1,6 +1,6 @@
 export default {
   state: {
-    taskList: JSON.parse(localStorage.getItem("taskList")|| "[]"),
+    taskList: JSON.parse(localStorage.getItem("taskList") || "[]"),
   },
   mutations: {
     newTask(state, task) {
@@ -10,7 +10,9 @@ export default {
     },
 
     deleteTask(state, taskRemove) {
-      state.taskList = state.taskList.filter((item) => item.id !== taskRemove.id);
+      state.taskList = state.taskList.filter(
+        (item) => item !== taskRemove
+      );
       localStorage.setItem("taskList", JSON.stringify(state.taskList));
     },
   },
@@ -29,11 +31,12 @@ export default {
       return state.taskList;
     },
     deleteTask(state) {
-      return state.taskList;
+      return state.taskList
     },
 
-    taskById: s => id => s.taskList.find(task => task.id === id)
-    
-    
+
+    taskById: (state) => (id) => state.taskList.find((task) => task.id === id),
+
+
   },
 };

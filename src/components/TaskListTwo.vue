@@ -39,8 +39,9 @@
           <td>
             <ButtonButton
               class="btn-small"
-              @eClick="handDelete(item)"
+              @eClick="handleDelete(item)"
               :title="'Удалить'"
+              :color="'Delete'"
             />
             <!-- todo доработать метод handDelete без select -->
           </td>
@@ -48,22 +49,22 @@
       </tbody>
     </table>
     <p v-else>Нет задач</p>
-    <SelectedTask
+    <!-- <SelectedTask
       @eclick="closeTask"
       :task="selectedTask"
       v-if="Object.keys(selectedTask).length"
-    />
+    /> -->
   </div>
 </template>
 
 <script lang="ts">
 import FilterTask from "./FilterTask.vue";
 import ButtonButton from "./ButtonButton.vue";
-import SelectedTask from "./SelectedTask.vue";
+// import SelectedTask from "./SelectedTask.vue";
 import { mapGetters } from "vuex";
 // import { filter } from "vue/types/umd";
 export default {
-  components: { SelectedTask, ButtonButton, FilterTask },
+  components: { ButtonButton, FilterTask },
   name: "TaskListTwo",
   props: {
     // taskList: [],
@@ -72,13 +73,13 @@ export default {
 
   data() {
     return {
-      selectedTask: {},
+      // selectedTask: {},
       filter: { name: "" },
     };
   },
   computed: {
     ...mapGetters(["taskList"]),
-    ...mapGetters(["deleteTask"]),
+    // ...mapGetters(["deleteTask"]),
 
     filterList() {
       // console.log(this.taskList);
@@ -96,25 +97,27 @@ export default {
     //   this.filter = filter;
     // },
 
-    hendleDelete() {
-      console.log(typeof this.task.id);
-      this.$store.dispatch("deleteTask", this.task.id);
+    handleDelete() {
+      console.log(2 + 2);
+
+      this.store.getters.taskById(+this.$route.params.id);
+      // this.$store.dispatch("deleteTask", this.task.id);
 
       //
       // this.taskList.push([...this.taskList]);
 
-      if (this.selectedTask) {
-        this.selectedTask = {};
-      }
+      // if (this.selectedTask) {
+      //   this.selectedTask = {};
+      // }
     },
 
-    closeTask() {
-      // console.log(this.selectedTask);
-      this.selectedTask = {};
-    },
-    select(task) {
-      this.selectedTask = task;
-    },
+    // closeTask() {
+    //   // console.log(this.selectedTask);
+    //   this.selectedTask = {};
+    // },
+    // select(task) {
+    //   this.selectedTask = task;
+    // },
   },
   // watch: {
   //   filter() {

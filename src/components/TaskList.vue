@@ -74,7 +74,7 @@ export default {
   },
   computed: {
     ...mapGetters(["taskList"]),
-    ...mapGetters(["deleteTask"]),
+    // ...mapGetters(["deleteTask"]),
 
     filterList() {
       // console.log(this.taskList);

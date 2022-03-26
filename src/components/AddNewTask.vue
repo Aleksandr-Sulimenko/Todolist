@@ -86,79 +86,83 @@
             <div class="task-type_text">
               <h6>Тип задачи</h6>
             </div>
-            <div class="task-type_selection">
+            <form class="task-type_selection">
               <div class="selection-checkbox">
-                <input
-                  v-model="task.typeTask"
-                  name="choice1"
-                  class="checkbox-task"
-                  id="typeChoice1"
-                  type="radio"
-                  value="К выполнению"
-                />
-
-                <label for="typeChoice1" class="checkbox-name"
-                  >К выполнению</label
-                >
+                <label for="typeChoice1" class="checkbox-name">
+                  <input
+                    v-model="task.typeTask"
+                    name="choice1"
+                    class="checkbox-task"
+                    id="typeChoice1"
+                    type="radio"
+                    value="К выполнению"
+                    checked
+                  />
+                  <span>К выполнению</span>
+                </label>
               </div>
               <div class="selection-checkbox">
-                <input
-                  v-model="task.typeTask"
-                  name="choice1"
-                  class="checkbox-task"
-                  id="typeChoice2"
-                  type="radio"
-                  value="Напоминание"
-                />
                 <label for="typeChoice2" class="checkbox-name">
-                  Напоминание</label
-                >
+                  <input
+                    v-model="task.typeTask"
+                    name="choice1"
+                    class="checkbox-task"
+                    id="typeChoice2"
+                    type="radio"
+                    value="Напоминание"
+                    checked
+                  />
+                  <span> Напоминание</span>
+                </label>
               </div>
-            </div>
+            </form>
           </div>
           <div class="task_type">
             <div class="task-type_text"><h6>Приоритет</h6></div>
-            <div class="task-type_selection">
+            <form class="task-type_selection">
               <div class="selection-checkbox">
-                <input
-                  v-model="task.priorityTask"
-                  id="priorityChoice1"
-                  value="Высокий"
-                  class="checkbox-task"
-                  type="radio"
-                  name="choice2"
-                />
-                <label for="priorityChoice1" class="checkbox-name"
-                  >Высокий</label
-                >
+                <label for="priorityChoice1" class="checkbox-name">
+                  <input
+                    v-model="task.priorityTask"
+                    id="priorityChoice1"
+                    value="Высокий"
+                    class="checkbox-task"
+                    type="radio"
+                    name="choice2"
+                    checked
+                  />
+                  <span>Высокий</span>
+                </label>
               </div>
               <div class="selection-checkbox">
-                <input
-                  v-model="task.priorityTask"
-                  id="priorityChoice2"
-                  value="Средний"
-                  class="checkbox-task"
-                  type="radio"
-                  name="choice2"
-                />
-                <label for="priorityChoice2" class="checkbox-name"
-                  >Средний</label
-                >
+                <label for="priorityChoice2" class="checkbox-name">
+                  <input
+                    v-model="task.priorityTask"
+                    id="priorityChoice2"
+                    value="Средний"
+                    class="checkbox-task"
+                    type="radio"
+                    name="choice2"
+                    checked
+                  />
+                  <span>Средний</span>
+                </label>
               </div>
               <div class="selection-checkbox">
-                <input
-                  v-model="task.priorityTask"
-                  id="priorityChoice3"
-                  value="Низкий"
-                  class="checkbox-task"
-                  type="radio"
-                  name="choice2"
-                />
-                <label for="priorityChoice3" class="checkbox-name"
-                  >Низкий</label
-                >
+                <label for="priorityChoice3" class="checkbox-name">
+                  <input
+                    v-model="task.priorityTask"
+                    id="priorityChoice3"
+                    value="Низкий"
+                    class="checkbox-task"
+                    type="radio"
+                    name="choice2"
+                    checked
+                  />
+                  <span>Низкий</span>
+                </label>
               </div>
-            </div>
+            </form>
           </div>
         </div>
         <div class="time_date">
