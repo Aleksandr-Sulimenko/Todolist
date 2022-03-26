@@ -97,13 +97,10 @@ export default {
     //   this.filter = filter;
     // },
 
-    handleDelete() {
-      console.log(2 + 2);
+    handleDelete(task) {
+      this.$store.dispatch("deleteTask", task);
 
-      this.store.getters.taskById(+this.$route.params.id);
-      // this.$store.dispatch("deleteTask", this.task.id);
-
-      //
+      //this.store.getters.taskById(+this.$route.params.id);
       // this.taskList.push([...this.taskList]);
 
       // if (this.selectedTask) {
