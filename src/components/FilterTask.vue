@@ -8,28 +8,10 @@
   </div>
 </template>
 <script lang="ts">
-// import { mapGetters } from "vuex";
 export default {
   name: "FilterTask",
   props: {
     filter: {},
-  },
-  data() {
-    return {
-      // filter: "",
-    };
-  },
-
-  methods: {
-    // changeFilter() {
-    //   this.$emit("filter", this.filter);
-    // },
-  },
-
-  watch: {
-    filter() {
-      // console.log(this.filter);
-    },
   },
 };
 </script>

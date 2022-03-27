@@ -60,13 +60,6 @@ export default {
       return this.taskList;
     },
   },
-
-  methods: {
-    handleDelete(item) {
-      const index = this.taskList.indexOf(item);
-      this.$store.dispatch("deleteTask", index);
-    },
-  },
 };
 </script>
 <style lang="scss">

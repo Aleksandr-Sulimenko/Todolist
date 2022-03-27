@@ -30,12 +30,22 @@
 </template>
 <script lang="ts">
 import ButtonButton from "./ButtonButton.vue";
+import { mapGetters } from "vuex";
 export default {
   components: { ButtonButton },
   name: "TaskTable",
   props: {
     item: {},
     ind: Number,
+  },
+  computed: {
+    ...mapGetters(["taskList"]),
+  },
+  methods: {
+    handleDelete(item) {
+      const index = this.taskList.indexOf(item);
+      this.$store.dispatch("deleteTask", index);
+    },
   },
 };
 </script>
