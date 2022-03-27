@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <TaskTable
+        <TaskTbl
           :item="item"
           :ind="ind"
           v-for="(item, ind) in filterList"
@@ -30,14 +30,14 @@
 </template>
 
 <script lang="ts">
-import TaskTable from "./TaskTable.vue";
+import TaskTbl from "./TaskTbl.vue";
 import FilterTask from "./FilterTask.vue";
 // import ButtonButton from "./ButtonButton.vue";
 import { mapGetters } from "vuex";
 // import { filter } from "vue/types/umd";
 export default {
   // components: { ButtonButton, FilterTask },
-  components: { TaskTable, FilterTask },
+  components: { TaskTbl, FilterTask },
   name: "TaskListTwo",
   props: {
     type: String,
