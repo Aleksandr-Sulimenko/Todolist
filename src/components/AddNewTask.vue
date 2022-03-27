@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="task_type-container">
-          <div class="task_type">
+          <!-- <div class="task_type">
             <div class="task-type_text">
               <h6>Тип задачи</h6>
             </div>
@@ -86,7 +86,7 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="task_type">
             <div class="task-type_text"><h6>Приоритет</h6></div>
             <div class="task-type_selection">

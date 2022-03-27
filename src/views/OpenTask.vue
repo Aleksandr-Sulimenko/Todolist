@@ -1,15 +1,34 @@
 <template>
-  <div class="container">
-    <h2>{{ Task.name }}</h2>
-    <h4>{{ Task.description }}</h4>
+  <div class="cont1ainer">
+    <h4>{{ Task.name }}</h4>
+    <table>
+      <tr>
+        <th>Статус</th>
+        <td class="active">{{ Task.status }}</td>
+      </tr>
+      <tr>
+        <th>Добавлено</th>
+        <td>{{ Task.dateAdd }}</td>
+      </tr>
+      <tr>
+        <th>Крайний срок</th>
+        <td>{{ Task.dateDue }}</td>
+      </tr>
+      <tr>
+        <th>Приоритет</th>
+        <td>{{ Task.priorityTask }}</td>
+      </tr>
+      <tr>
+        <th>Содержание</th>
+        <td>{{ Task.description }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script lang="ts">
-// import { mapGetters } from "vuex";
 export default {
   computed: {
-    // ...mapGetters(["taskList"]),
     Task() {
       console.log(typeof this.$route.params.id);
       return this.$store.getters.taskById(+this.$route.params.id);
@@ -17,3 +36,8 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+td {
+  padding-left: 40px;
+}
+</style>
