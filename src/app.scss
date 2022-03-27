@@ -337,13 +337,13 @@ button:hover {
 
 //TODO Media Media Media Media Media Media Media Media
 
-@media (min-width: 640px) {
-  .wrapper_tasks {
-    grid-template-columns: repeat(5, minmax(0,1fr));
-  }
-  // .task_name-content {
-  // }
-};
+// @media (min-width: 640px) {
+//   .wrapper_tasks {
+//     grid-template-columns: repeat(5, minmax(0,1fr));
+//   }
+//   // .task_name-content {
+//   // }
+// };
 
 @media (max-width: 640px) {
   .time_date {

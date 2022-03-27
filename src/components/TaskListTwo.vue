@@ -17,34 +17,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, ind) in filterList" :key="item.id">
-          <td>{{ ind + 1 }}.</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.dateAdd }}</td>
-          <td class="size-descript">
-            <div class="descript">{{ item.description }}</div>
-          </td>
-          <td>{{ item.status }}</td>
-          <td>{{ new Date( item.dateDue ).toLocaleDateString(),}}</td>
-          <td>
-            <router-link
-              teg="button"
-              class="btn-small"
-              :to="'/task/' + item.id"
-              active-class="activ"
-            >
-              Открыть
-            </router-link>
-          </td>
-          <td>
-            <ButtonButton
-              class="btn-small"
-              @eClick="handleDelete(item)"
-              :title="'Удалить'"
-              :color="'Delete'"
-            />
-          </td>
-        </tr>
+        <TaskTable
+          :item="item"
+          :ind="ind"
+          v-for="(item, ind) in filterList"
+          :key="item.id"
+        />
       </tbody>
     </table>
     <p v-else>Нет задач</p>
@@ -52,12 +30,14 @@
 </template>
 
 <script lang="ts">
+import TaskTable from "./TaskTable.vue";
 import FilterTask from "./FilterTask.vue";
-import ButtonButton from "./ButtonButton.vue";
+// import ButtonButton from "./ButtonButton.vue";
 import { mapGetters } from "vuex";
 // import { filter } from "vue/types/umd";
 export default {
-  components: { ButtonButton, FilterTask },
+  // components: { ButtonButton, FilterTask },
+  components: { TaskTable, FilterTask },
   name: "TaskListTwo",
   props: {
     type: String,
