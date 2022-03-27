@@ -35,7 +35,7 @@ export default {
   name: "TaskTable",
   props: {
     item: {},
-    ind: String,
+    ind: Number,
   },
 };
 </script>

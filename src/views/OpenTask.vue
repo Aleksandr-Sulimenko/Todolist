@@ -23,6 +23,9 @@
         <td>{{ Task.description }}</td>
       </tr>
     </table>
+    <router-link teg="button" class="btn-small" :to="'/'" active-class="activ">
+      Закрыть
+    </router-link>
   </div>
 </template>
 
