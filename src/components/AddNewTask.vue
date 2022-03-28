@@ -27,10 +27,9 @@
                   id="input_name"
                   type="text"
                   maxlength="20"
+                  class="validate"
                 />
-                <!-- <span style="float: right; font-size: 12px"
-                  >{{ task.name.length }}/20</span
-                > -->
+                <!-- <span>{{ task.name.length }}/20</span> -->
                 <span>{{ error }}</span>
                 <label for="input_name">Заголовок</label>
               </div>
