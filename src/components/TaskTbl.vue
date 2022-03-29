@@ -6,7 +6,7 @@
     <td class="size-descript">
       <div class="descript">{{ item.description }}</div>
     </td>
-    <td>{{ item.status }}</td>
+    <td class="active">{{ item.status }}</td>
     <td>{{ new Date( item.dateDue ).toLocaleDateString(),}}</td>
     <td>
       <router-link
@@ -21,11 +21,31 @@
     <td>
       <ButtonButton
         class="btn-small"
-        @eClick="handleDelete(item)"
+        @eClick="openModalMini"
         :title="'Удалить'"
         :color="'Delete'"
       />
     </td>
+    <div v-if="modalDeleteTask" class="container-modalMini">
+      <div class="modal-windowMini">
+        <div class="content-windowMini">
+          <div class="modal-header">Удалить задачу?</div>
+          <div class="">
+            <ButtonButton
+              class="btn-small buttons-modal"
+              @eClick="closeModalMini"
+              :title="'Отмена'"
+            />
+            <ButtonButton
+              class="btn-small"
+              @eClick="handleDelete(item)"
+              :title="'Удалить'"
+              :color="'Delete'"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   </tr>
 </template>
 <script lang="ts">
@@ -38,10 +58,21 @@ export default {
     item: {},
     ind: Number,
   },
+  data() {
+    return {
+      modalDeleteTask: false,
+    };
+  },
   computed: {
     ...mapGetters(["taskList"]),
   },
   methods: {
+    openModalMini() {
+      this.modalDeleteTask = true;
+    },
+    closeModalMini() {
+      this.modalDeleteTask = false;
+    },
     handleDelete(item) {
       const index = this.taskList.indexOf(item);
       this.$store.dispatch("deleteTask", index);
@@ -49,3 +80,8 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.buttons-modal {
+  margin-right: 50px;
+}
+</style>

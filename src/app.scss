@@ -17,7 +17,7 @@
 }
 
 .active {
-  color: rgb(26, 182, 26);
+  color: #26a69a;
   font-size: 20px;
 }
 
@@ -103,7 +103,17 @@ button:hover {
   left: 0;
   background: rgb(255, 255, 255);
   display: flex;
-  z-index: 1;
+  z-index: 1111;
+}
+.container-modalMini {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.096);
+  display: flex;
+  z-index: 1111;
 }
 .modal-window {
   // .modal-window_modal
@@ -116,6 +126,27 @@ button:hover {
     border-radius: 11px;
     background: rgba(0, 0, 0, 0.096);
   }
+}
+.modal-windowMini {
+  // max-width: 30%;
+  margin: auto auto;
+  // position: relative;
+  // width: 100%;
+  padding: 10px;
+  background-color: rgb(206, 206, 206);
+  // border: 1px solid rgba(0, 0, 0, .2);
+  // border-radius: 4px;
+  // max-height: 80vh;
+  // overflow-y: auto;
+}
+.content-windowMini {
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  background-color: rgb(255, 255, 255);
+}
+.modal-header {
+  margin-bottom: 50px;
 }
 .modal-h1 {
   margin-bottom: 50px;

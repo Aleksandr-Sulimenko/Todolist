@@ -181,7 +181,7 @@ export default {
         dateAdd: "",
         dateDue: "",
         id: "",
-        status: "active",
+        status: "",
       },
     };
   },
@@ -197,6 +197,7 @@ export default {
 
     closeModal() {
       this.showModal = false;
+      this.task = {};
     },
 
     addTaskTask() {
@@ -204,6 +205,7 @@ export default {
         this.error = "Обязательно для заполнения";
         return;
       }
+      this.task.status = "active";
       this.task.id = Date.now();
       this.task.dateAdd = new Date().toLocaleDateString();
       this.$store.dispatch("newTask", this.task);
