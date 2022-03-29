@@ -25,34 +25,20 @@
         :title="'Удалить'"
         :color="'Delete'"
       />
+      <ModalDelete
+        v-if="hideModalMini"
+        @eClick="closeModalMini"
+        @eeClick="handleDelete(item)"
+      />
     </td>
-    <div v-if="modalDeleteTask" class="container-modalMini">
-      <div class="modal-windowMini">
-        <div class="content-windowMini">
-          <div class="modal-header">Удалить задачу?</div>
-          <div class="">
-            <ButtonButton
-              class="btn-small buttons-modal"
-              @eClick="closeModalMini"
-              :title="'Отмена'"
-            />
-            <ButtonButton
-              class="btn-small"
-              @eClick="handleDelete(item)"
-              :title="'Удалить'"
-              :color="'Delete'"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
   </tr>
 </template>
 <script lang="ts">
+import ModalDelete from "./ModalDelete.vue";
 import ButtonButton from "./ButtonButton.vue";
 import { mapGetters } from "vuex";
 export default {
-  components: { ButtonButton },
+  components: { ButtonButton, ModalDelete },
   name: "TaskTable",
   props: {
     item: {},
@@ -60,7 +46,7 @@ export default {
   },
   data() {
     return {
-      modalDeleteTask: false,
+      hideModalMini: false,
     };
   },
   computed: {
@@ -68,11 +54,12 @@ export default {
   },
   methods: {
     openModalMini() {
-      this.modalDeleteTask = true;
+      this.hideModalMini = true;
     },
     closeModalMini() {
-      this.modalDeleteTask = false;
+      this.hideModalMini = false;
     },
+
     handleDelete(item) {
       const index = this.taskList.indexOf(item);
       this.$store.dispatch("deleteTask", index);
