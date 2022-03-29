@@ -6,7 +6,7 @@
     <td class="size-descript">
       <div class="descript">{{ item.description }}</div>
     </td>
-    <td>{{ item.status }}</td>
+    <td class="active">{{ item.status }}</td>
     <td>{{ new Date( item.dateDue ).toLocaleDateString(),}}</td>
     <td>
       <router-link
@@ -21,27 +21,45 @@
     <td>
       <ButtonButton
         class="btn-small"
-        @eClick="handleDelete(item)"
+        @eClick="openModalMini"
         :title="'Удалить'"
         :color="'Delete'"
+      />
+      <ModalDelete
+        v-if="hideModalMini"
+        @eClick="closeModalMini"
+        @eeClick="handleDelete(item)"
       />
     </td>
   </tr>
 </template>
 <script lang="ts">
+import ModalDelete from "./ModalDelete.vue";
 import ButtonButton from "./ButtonButton.vue";
 import { mapGetters } from "vuex";
 export default {
-  components: { ButtonButton },
+  components: { ButtonButton, ModalDelete },
   name: "TaskTable",
   props: {
     item: {},
     ind: Number,
   },
+  data() {
+    return {
+      hideModalMini: false,
+    };
+  },
   computed: {
     ...mapGetters(["taskList"]),
   },
   methods: {
+    openModalMini() {
+      this.hideModalMini = true;
+    },
+    closeModalMini() {
+      this.hideModalMini = false;
+    },
+
     handleDelete(item) {
       const index = this.taskList.indexOf(item);
       this.$store.dispatch("deleteTask", index);
@@ -49,3 +67,8 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+.buttons-modal {
+  margin-right: 50px;
+}
+</style>
