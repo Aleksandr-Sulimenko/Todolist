@@ -6,8 +6,12 @@
     <td class="size-descript">
       <div class="descript">{{ item.description }}</div>
     </td>
-    <td class="active">{{ item.status }}</td>
-    <td>{{ new Date( item.dateDue ).toLocaleDateString(),}}</td>
+    <td class="active" :class="{ outdated: item.status === 'outdated' }">
+      {{ statusTask() }}
+    </td>
+    <td>
+      {{ new Date(item.dateDue).toLocaleDateString() }}
+    </td>
     <td>
       <router-link
         teg="button"
@@ -25,12 +29,12 @@
         :title="'Удалить'"
         :color="'Delete'"
       />
-      <ModalDelete
-        v-if="hideModalMini"
-        @eClick="closeModalMini"
-        @eeClick="handleDelete(item)"
-      />
     </td>
+    <ModalDelete
+      v-if="hideModalMini"
+      @eClick="closeModalMini"
+      @eeClick="handleDelete(item)"
+    />
   </tr>
 </template>
 <script lang="ts">
@@ -53,7 +57,13 @@ export default {
     ...mapGetters(["taskList"]),
   },
   methods: {
+    statusTask() {
+      return (this.item.status =
+        new Date(this.item.dateDue) > new Date() ? "active" : "outdated");
+    },
     openModalMini() {
+      console.log(new Date(this.item.dateDue) < new Date());
+
       this.hideModalMini = true;
     },
     closeModalMini() {

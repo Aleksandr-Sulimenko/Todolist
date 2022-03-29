@@ -4,7 +4,12 @@
     <table>
       <tr>
         <th>Статус</th>
-        <td class="active">{{ Task.status }}</td>
+        <td
+          class="active"
+          v-bind:class="{ outdated: Task.status === 'outdated' }"
+        >
+          {{ Task.status }}
+        </td>
       </tr>
       <tr>
         <th>Добавлено</th>
