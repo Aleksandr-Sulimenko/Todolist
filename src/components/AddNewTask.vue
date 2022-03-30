@@ -28,9 +28,10 @@
                   type="text"
                   maxlength="20"
                   class="validate"
+                  color
                 />
                 <!-- <span>{{ task.name.length }}/20</span> -->
-                <span>{{ error }}</span>
+                <span class="outdated">{{ error }}</span>
                 <label for="input_name">Заголовок</label>
               </div>
             </div>
@@ -89,7 +90,7 @@
           <div class="task_type">
             <div class="task-type_text"><h6>Приоритет</h6></div>
             <div class="task-type_selection">
-              <div class="selection-checkbox">
+              <form action="input1.php" class="selection-checkbox">
                 <label for="priorityChoice1" class="checkbox-name">
                   <input
                     v-model="task.priorityTask"
@@ -102,7 +103,7 @@
                   />
                   <span>Высокий</span>
                 </label>
-              </div>
+              </form>
               <div class="selection-checkbox">
                 <label for="priorityChoice2" class="checkbox-name">
                   <input
@@ -112,7 +113,6 @@
                     class="checkbox-task"
                     type="radio"
                     name="choice2"
-                    checked
                   />
                   <span>Средний</span>
                 </label>
@@ -126,7 +126,6 @@
                     class="checkbox-task"
                     type="radio"
                     name="choice2"
-                    checked
                   />
                   <span>Низкий</span>
                 </label>
@@ -140,7 +139,7 @@
             <input
               v-model="task.dateDue"
               type="datetime-local"
-              name=""
+              name="deadline"
               id="date_completion"
             />
           </div>
@@ -185,7 +184,11 @@ export default {
       },
     };
   },
-
+  // computed: {
+  //   validName() {
+  //     return this.error = "";
+  //   },
+  // },
   methods: {
     openModal() {
       return (this.showModal = true);
@@ -203,8 +206,13 @@ export default {
     addTaskTask() {
       if (!this.task.name) {
         this.error = "Обязательно для заполнения";
+
         return;
+      } else {
+        this.error = "";
       }
+
+      console.log(typeof this.error);
       this.task.status = "active";
       this.task.id = Date.now();
       this.task.dateAdd = new Date().toLocaleDateString();

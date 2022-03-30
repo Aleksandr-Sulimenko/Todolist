@@ -62,7 +62,10 @@ export default {
         new Date(this.item.dateDue) > new Date() ? "active" : "outdated");
     },
     openModalMini() {
-      console.log(new Date(this.item.dateDue) < new Date());
+      console.log(
+        new Date(this.item.dateDue) < new Date(),
+        new Date(this.item.dateDue)
+      );
 
       this.hideModalMini = true;
     },

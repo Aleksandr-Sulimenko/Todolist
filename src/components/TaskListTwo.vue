@@ -70,6 +70,6 @@ export default {
   padding-right: 10%;
 }
 .size-descript {
-  max-width: 300px;
+  max-width: 250px;
 }
 </style>
