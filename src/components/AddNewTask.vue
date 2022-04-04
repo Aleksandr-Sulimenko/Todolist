@@ -99,7 +99,7 @@
                     class="checkbox-task"
                     type="radio"
                     name="choice2"
-                    checked
+                    checked="checked"
                   />
                   <span>Высокий</span>
                 </label>
@@ -175,7 +175,6 @@ export default {
       task: {
         name: "",
         description: "",
-        typeTask: null,
         priorityTask: null,
         dateAdd: "",
         dateDue: "",
@@ -184,11 +183,7 @@ export default {
       },
     };
   },
-  // computed: {
-  //   validName() {
-  //     return this.error = "";
-  //   },
-  // },
+
   methods: {
     openModal() {
       return (this.showModal = true);
@@ -211,9 +206,12 @@ export default {
       } else {
         this.error = "";
       }
+      if (!this.task.dateDue) {
+        this.task.status = "outdated";
+      } else {
+        this.task.status = "active";
+      }
 
-      console.log(typeof this.error);
-      this.task.status = "active";
       this.task.id = Date.now();
       this.task.dateAdd = new Date().toLocaleDateString();
       this.$store.dispatch("newTask", this.task);

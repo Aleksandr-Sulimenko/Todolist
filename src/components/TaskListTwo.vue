@@ -57,6 +57,7 @@ export default {
           .filter((item) => item.name.includes(this.filter.name))
           .slice(0, 5);
       }
+
       return this.taskList;
     },
   },
