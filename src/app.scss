@@ -9,11 +9,17 @@
   align-items: center;
   color: #424142;
   background-color: rgba(243, 244, 246, 1);
+  min-width: 805px;
+}
+
+td {
+  list-style: none;
 }
 
 .container {
   width: 100%;
   text-align: center;
+  // min-width: 802px;
 }
 
 .active {
@@ -131,16 +137,11 @@ button:hover {
   }
 }
 .modal-windowMini {
-  // max-width: 30%;
   margin: auto auto;
-  // position: relative;
-  // width: 100%;
   padding: 10px;
   background-color: rgb(206, 206, 206);
-  // border: 1px solid rgba(0, 0, 0, .2);
-  // border-radius: 4px;
-  // max-height: 80vh;
-  // overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 4px;
 }
 .content-windowMini {
   display: flex;

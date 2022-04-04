@@ -2,15 +2,15 @@
   <div class="container-modalMini">
     <div class="modal-windowMini">
       <div class="content-windowMini">
-        <div class="modal-header">Удалить задачу?</div>
+        <div class="modal-header"><h4>Удалить задачу?</h4></div>
         <div class="">
           <ButtonButton
-            class="btn-small buttons-modal"
+            class="btn buttons-modal"
             @eClick="closeModalMini"
             :title="'Отмена'"
           />
           <ButtonButton
-            class="btn-small"
+            class="btn"
             @eClick="handleDelete"
             :title="'Удалить'"
             :color="'Delete'"

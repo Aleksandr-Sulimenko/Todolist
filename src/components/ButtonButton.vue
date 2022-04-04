@@ -72,7 +72,7 @@ export default {
   background-color: rgb(126, 0, 0);
 }
 .Delete:focus {
-  background-color: transparent;
+  background-color: rgb(126, 0, 0);
 }
 .Close:hover {
   background-color: transparent;

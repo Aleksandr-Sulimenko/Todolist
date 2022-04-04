@@ -46,6 +46,6 @@ export default {
 </script>
 <style lang="scss">
 td {
-  padding-left: 40px;
+  // padding-left: 40px;
 }
 </style>

@@ -57,6 +57,7 @@ export default {
           .filter((item) => item.name.includes(this.filter.name))
           .slice(0, 5);
       }
+
       return this.taskList;
     },
   },
@@ -70,6 +71,6 @@ export default {
   padding-right: 10%;
 }
 .size-descript {
-  max-width: 300px;
+  max-width: 250px;
 }
 </style>

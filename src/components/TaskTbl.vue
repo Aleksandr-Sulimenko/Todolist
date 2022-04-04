@@ -6,8 +6,8 @@
     <td class="size-descript">
       <div class="descript">{{ item.description }}</div>
     </td>
-    <td class="active" :class="{ outdated: item.status === 'outdated' }">
-      {{ statusTask() }}
+    <td :class="item.status">
+      {{ item.status }}
     </td>
     <td>
       {{ new Date(item.dateDue).toLocaleDateString() }}
@@ -53,17 +53,35 @@ export default {
       hideModalMini: false,
     };
   },
-  computed: {
-    ...mapGetters(["taskList"]),
+  async mounted() {
+    this.statusTask();
+    setTimeout(this.statusTask, this.outdateIndex);
+    // console.log(this.statusTask, this.outdateIndex);
   },
+  computed: {
+    outdateIndex() {
+      return +new Date(this.item.dateDue) - this.item.id;
+    },
+    ...mapGetters(["taskList"]),
+
+    // statusTask() {
+    //   return new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
+    // },
+  },
+
   methods: {
     statusTask() {
-      return (this.item.status =
-        new Date(this.item.dateDue) > new Date() ? "active" : "outdated");
+      this.$store.dispatch("updateStatus", {
+        id: this.item.id,
+        // status: this.item.status,
+        dateDue: this.item.dateDue,
+      });
+
+      // this.item.status =
+      //   new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
     },
     openModalMini() {
-      console.log(new Date(this.item.dateDue) < new Date());
-
+      console.log(this.outdateIndex, this.item);
       this.hideModalMini = true;
     },
     closeModalMini() {
