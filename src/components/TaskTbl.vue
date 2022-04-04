@@ -71,13 +71,14 @@ export default {
 
   methods: {
     statusTask() {
-      this.item.status =
-        new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
+      this.$store.dispatch("updateStatus", {
+        id: this.item.id,
+        // status: this.item.status,
+        dateDue: this.item.dateDue,
+      });
 
-      // setTimeout(() => {
-      //   this.item.status =
-      //     new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
-      // }, this.outdateIndex);
+      // this.item.status =
+      //   new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
     },
     openModalMini() {
       console.log(this.outdateIndex, this.item);
