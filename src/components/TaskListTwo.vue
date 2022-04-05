@@ -32,11 +32,8 @@
 <script lang="ts">
 import TaskTbl from "./TaskTbl.vue";
 import FilterTask from "./FilterTask.vue";
-// import ButtonButton from "./ButtonButton.vue";
 import { mapGetters } from "vuex";
-// import { filter } from "vue/types/umd";
 export default {
-  // components: { ButtonButton, FilterTask },
   components: { TaskTbl, FilterTask },
   name: "TaskListTwo",
   props: {

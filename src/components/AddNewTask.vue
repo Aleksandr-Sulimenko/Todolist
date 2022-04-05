@@ -28,7 +28,7 @@
                   type="text"
                   maxlength="20"
                   class="validate"
-                  color
+                  avtocomplete="on | off"
                 />
                 <!-- <span>{{ task.name.length }}/20</span> -->
                 <span class="outdated">{{ error }}</span>
@@ -52,41 +52,6 @@
           </div>
         </div>
         <div class="task_type-container">
-          <!-- <div class="task_type">
-            <div class="task-type_text">
-              <h6>Тип задачи</h6>
-            </div>
-            <div class="task-type_selection">
-              <div class="selection-checkbox">
-                <label for="typeChoice1" class="checkbox-name">
-                  <input
-                    v-model="task.typeTask"
-                    name="choice1"
-                    class="checkbox-task"
-                    id="typeChoice1"
-                    type="radio"
-                    value="К выполнению"
-                    checked
-                  />
-                  <span>К выполнению</span>
-                </label>
-              </div>
-              <div class="selection-checkbox">
-                <label for="typeChoice2" class="checkbox-name">
-                  <input
-                    v-model="task.typeTask"
-                    name="choice1"
-                    class="checkbox-task"
-                    id="typeChoice2"
-                    type="radio"
-                    value="Напоминание"
-                    checked
-                  />
-                  <span> Напоминание</span>
-                </label>
-              </div>
-            </div>
-          </div> -->
           <div class="task_type">
             <div class="task-type_text"><h6>Приоритет</h6></div>
             <div class="task-type_selection">

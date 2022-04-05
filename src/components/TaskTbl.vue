@@ -54,31 +54,22 @@ export default {
     };
   },
   async mounted() {
-    this.statusTask();
+    // this.statusTask();
     setTimeout(this.statusTask, this.outdateIndex);
-    // console.log(this.statusTask, this.outdateIndex);
   },
   computed: {
     outdateIndex() {
       return +new Date(this.item.dateDue) - this.item.id;
     },
     ...mapGetters(["taskList"]),
-
-    // statusTask() {
-    //   return new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
-    // },
   },
 
   methods: {
     statusTask() {
       this.$store.dispatch("updateStatus", {
         id: this.item.id,
-        // status: this.item.status,
         dateDue: this.item.dateDue,
       });
-
-      // this.item.status =
-      //   new Date(this.item.dateDue) > new Date() ? "active" : "outdated";
     },
     openModalMini() {
       console.log(this.outdateIndex, this.item);
